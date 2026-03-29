@@ -4,105 +4,76 @@
 <meta charset="UTF-8">
 <title>Madam President</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
 
-body {
+body{
   margin:0;
-  background:#f9f9f9;
-  font-family:'Inter', sans-serif;
-  color:#111;
-  overflow-x:hidden;
+  font-family:'Poppins',sans-serif;
+  background:#f3f4f6;
+  color:#222;
 }
 
-/* WELCOME */
-#welcome {
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  animation:fadeIn 2s ease;
-}
-
-#welcome h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:70px;
-  color:#000;
-  text-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* SECTIONS */
-.section {
-  display:none;
-  padding:60px 20px;
+/* HEADER */
+.header{
+  background:linear-gradient(90deg,#1d4ed8,#06b6d4);
+  color:white;
+  padding:40px 20px;
   text-align:center;
 }
 
-.active {
-  display:block;
-  animation:fadeUp 1s ease;
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:38px;
 }
 
-/* PREMIUM CARD */
-.card {
-  max-width:800px;
-  margin:auto;
-  padding:40px;
-  border-radius:25px;
+/* CARD */
+.card{
   background:white;
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.08),
-    0 2px 10px rgba(0,0,0,0.05);
+  margin:20px;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* GOLD HIGHLIGHT */
+.highlight{
+  background:linear-gradient(90deg,#facc15,#fde68a);
+  padding:12px;
+  border-radius:10px;
+  margin-top:10px;
+  font-weight:500;
 }
 
 /* HEADINGS */
-h2 {
-  font-family:'Playfair Display', serif;
-  font-size:36px;
-  margin-bottom:20px;
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  margin-bottom:10px;
 }
 
 /* COUNTDOWN */
-.countdown {
-  font-size:40px;
-  font-weight:600;
-  margin:20px 0;
+.countdown{
+  font-size:32px;
+  font-weight:bold;
+  margin:15px 0;
 }
 
 /* BUTTON */
-.btn {
-  padding:14px 30px;
-  background:#000;
-  color:white;
+.btn{
+  background:#facc15;
   border:none;
-  border-radius:30px;
+  padding:12px 25px;
+  border-radius:25px;
   cursor:pointer;
-  font-size:16px;
-  transition:0.3s;
+  font-weight:bold;
+  margin-top:15px;
 }
 
-.btn:hover {
-  transform:scale(1.05);
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* MESSAGE */
-.message {
-  line-height:1.8;
-  font-size:16px;
-}
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
-}
-
-@keyframes fadeUp {
-  from {opacity:0; transform:translateY(40px);}
-  to {opacity:1; transform:translateY(0);}
+/* HIDDEN */
+.hidden{
+  display:none;
 }
 
 </style>
@@ -110,61 +81,61 @@ h2 {
 
 <body>
 
-<!-- WELCOME -->
-<div id="welcome">
+<!-- HEADER -->
+<div class="header">
   <h1>Welcome Madam President</h1>
+  <p>Official Special Access Portal</p>
 </div>
 
-<!-- PAGE 1 -->
-<div id="page1" class="section">
+<!-- COUNTDOWN SECTION -->
+<div id="page1" class="card">
 
-  <div class="card">
-    <h2>Countdown for the President’s Birthday</h2>
-    <div id="countdown" class="countdown"></div>
+  <h2>Countdown for the President’s Birthday 🎂</h2>
 
-    <button class="btn" onclick="nextPage()">Continue</button>
+  <div id="countdown" class="countdown"></div>
+
+  <div class="highlight">
+    A special surprise is under preparation with premium quality & precision.
   </div>
 
+  <button class="btn" onclick="nextPage()">Continue →</button>
+
 </div>
 
-<!-- PAGE 2 -->
-<div id="page2" class="section">
+<!-- MESSAGE SECTION -->
+<div id="page2" class="card hidden">
 
-  <div class="card message">
+  <h2>Confidential Message</h2>
 
-    <p>
-    Madam President,  
-    This message is not just a simple note but a carefully crafted experience designed with precision, effort, and emotion. The gift being prepared for you is undergoing a highly detailed and technically refined process. It involves coordination, structured planning, and even secure layers of conceptual design to ensure that the final outcome is not just impressive but truly exceptional.  
+  <p>
+  Madam President,  
+  This is not just a message but a carefully structured experience.  
+  Your gift is being prepared with technical precision, creative enhancement, and secure planning.  
 
-    Every element is being reviewed and enhanced with attention to detail, ensuring that quality and uniqueness are maintained at the highest level. This is not just about creating a gift, but about building something meaningful — something that reflects effort, intelligence, and genuine care.  
+  Multiple stages of development are involved including coordination with media-level execution and structured improvements.  
+  Every detail is being refined to ensure the final outcome is not just impressive but meaningful.  
 
-    The preparation includes multiple stages where improvement and refinement are continuously applied. It is designed to deliver not just a moment of surprise, but a lasting memory that you will truly appreciate.  
+  This effort carries both logic and emotion, making it more than just a simple surprise.  
+  It is designed to create a memorable experience for you.  
 
-    Therefore, a little patience is required, as what is being created is meant to be worth every second of the wait.  
+  Therefore, a little patience is requested as the preparation is ongoing at a premium level.  
+  </p>
 
-    </p>
+  <div class="highlight">
+    📌 Note: Please send your address to officially dispatch the gift.
+  </div>
 
-    <p><b>Note:</b> Please send your address to officially dispatch the gift.</p>
+  <button class="btn" onclick="sendMail()">Send Address</button>
 
-    <button class="btn" onclick="sendMail()">Send Address</button>
-
-    <p style="margin-top:25px;">
-    Thank You Madam President ❤️<br><br>
-    Further details can be discussed with Bhai Mansi Ji,  
-    as we are not permitted to disclose more information here.
-    </p>
-
+  <div class="highlight" style="margin-top:20px;">
+    Thank You Madam President ❤️ <br><br>
+    For further details, please discuss with <b>Mankit Bhai</b>.  
+    We are not permitted to disclose more information here.
   </div>
 
 </div>
 
 <script>
-
-// AUTO TRANSITION
-setTimeout(()=>{
-  document.getElementById("welcome").style.display="none";
-  document.getElementById("page1").classList.add("active");
-},3000);
 
 // COUNTDOWN
 const target=new Date("April 23, 2026").getTime();
@@ -184,11 +155,11 @@ setInterval(()=>{
 
 // NEXT PAGE
 function nextPage(){
-  document.getElementById("page1").classList.remove("active");
-  document.getElementById("page2").classList.add("active");
+  document.getElementById("page1").classList.add("hidden");
+  document.getElementById("page2").classList.remove("hidden");
 }
 
-// EMAIL OPEN
+// EMAIL
 function sendMail(){
   window.location.href="mailto:mankitmankit7@gmail.com?subject=Address Submission&body=Enter your address here...";
 }
