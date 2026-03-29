@@ -4,83 +4,74 @@
 <meta charset="UTF-8">
 <title>Madam President</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 
 body {
   margin:0;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle,#000,#111);
+  font-family:Poppins;
+  background:black;
   color:white;
   text-align:center;
 }
 
-/* 3D TEXT */
-.welcome {
+/* WELCOME */
+#welcome {
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-.welcome h1 {
-  font-family:'Playfair Display', serif;
-  font-size:55px;
+#welcome h1 {
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
   color:gold;
-  text-shadow:0 0 10px gold,0 0 30px gold,4px 4px 10px black;
+  text-shadow:0 0 20px gold,0 0 40px gold,5px 5px 10px black;
 }
 
-/* NAV */
-nav {
-  background:#000;
-  padding:15px;
-  border-bottom:2px solid gold;
+/* PAGE */
+.section {
+  display:none;
+  padding:40px;
 }
 
-nav button {
-  background:none;
-  border:none;
-  color:gold;
-  margin:10px;
-  cursor:pointer;
-  font-size:16px;
+.active {
+  display:block;
 }
 
 /* BOX */
 .box {
-  margin:30px;
-  padding:25px;
+  background:#111;
+  padding:30px;
   border-radius:20px;
-  background: linear-gradient(145deg,#111,#000);
   box-shadow:0 0 20px gold;
-  display:none;
 }
 
-.active {display:block;}
-
+/* COUNTDOWN */
 .countdown {
-  font-size:30px;
+  font-size:32px;
   color:gold;
+  margin:20px;
 }
 
-/* FORM */
-input, textarea {
-  width:80%;
-  padding:10px;
-  margin:10px;
-  border-radius:10px;
-  border:none;
-}
-
+/* BUTTON */
 .btn {
+  padding:12px 25px;
   background:gold;
   color:black;
-  padding:12px 25px;
   border:none;
   border-radius:10px;
   cursor:pointer;
-  font-weight:bold;
+  margin-top:20px;
+}
+
+/* MESSAGE */
+.message {
+  max-width:800px;
+  margin:auto;
+  line-height:1.6;
 }
 
 </style>
@@ -89,74 +80,56 @@ input, textarea {
 <body>
 
 <!-- WELCOME -->
-<div class="welcome" id="welcome">
+<div id="welcome">
   <h1>✨ Welcome Madam President ✨</h1>
 </div>
 
-<!-- MAIN -->
-<div id="main" style="display:none;">
+<!-- COUNTDOWN PAGE -->
+<div id="page1" class="section">
 
-<nav>
-  <button onclick="showSection('home')">Home</button>
-  <button onclick="showSection('gift')">Gift</button>
-  <button onclick="showSection('form')">Submit</button>
-</nav>
+  <div class="box">
+    <h2>Countdown for the President Birthday 🎂</h2>
+    <div id="countdown" class="countdown"></div>
 
-<!-- HOME -->
-<div id="home" class="box active">
-  <h2>Official Countdown</h2>
-  <div id="countdown" class="countdown"></div>
-</div>
-
-<!-- GIFT -->
-<div id="gift" class="box">
-  <p>
-    Tanishi Ji, Happy Birthday in Advance 🎉<br><br>
-    Aapka gift confidential tareeke se prepare ho raha hai.<br>
-    Isme effort + logic + improvement add kiya gaya hai ❤️<br><br>
-    Thoda wait kijiye...
-  </p>
-</div>
-
-<!-- FORM (EMAIL SEND) -->
-<div id="form" class="box">
-
-<h2>Enter Details</h2>
-
-<form action="https://formsubmit.co/mankitmankit7@gmail.com" method="POST">
-
-<input type="text" name="Name" placeholder="Full Name" required><br>
-<textarea name="Address" placeholder="Full Address" required></textarea><br>
-
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_subject" value="New Birthday Details 🎁">
-
-<button class="btn" type="submit">Submit</button>
-
-</form>
-
-<p>
-Happy Birthday in Advance Madam President 🎂<br>
-Surprises ke liye ready rahiye ❤️
-</p>
+    <button class="btn" onclick="nextPage()">Aage Chalein</button>
+  </div>
 
 </div>
+
+<!-- MESSAGE PAGE -->
+<div id="page2" class="section">
+
+  <div class="box message">
+
+    <p>
+    Madam President,  
+    Yeh message ek simple notification nahi hai, balki ek carefully crafted expression hai jo dedication, effort aur planning ka result hai. Aapke liye jo gift prepare kiya ja raha hai, woh sirf ek normal surprise nahi hai, balki usme technical precision, creativity aur emotional value teenon ka perfect combination include kiya gaya hai.  
+
+    Is gift ko banane ke liye multiple levels par kaam kiya ja raha hai — media coordination, structure planning, aur encryption level tak ki detailing bhi ensure ki ja rahi hai. Har element ko is tarah design kiya gaya hai ki woh unique ho, secure ho aur aapke liye truly special feel create kare.  
+
+    Yeh process itna simple nahi hai jitna dikhta hai, kyunki har step mein accuracy aur perfection ka dhyan rakha gaya hai. Har small detail ko carefully analyse kiya gaya hai taaki final result flawless ho. Isme sirf effort hi nahi balki ek genuine intention aur care bhi reflect hoti hai.  
+
+    Aapke liye yeh gift ek experience banane ki koshish hai, jo sirf ek object nahi balki ek yaad ban sake. Isliye thoda sa patience zaruri hai, kyunki jo prepare ho raha hai woh bilkul worth the wait hai.  
+
+    </p>
+
+    <p><b>Note:</b> Please apna address hume send kijiye taaki gift officially parcel kiya ja sake.</p>
+
+    <button class="btn" onclick="sendMail()">Send Address</button>
+
+    <p style="margin-top:20px;">Thank You Madam President ❤️</p>
+
+  </div>
 
 </div>
 
 <script>
 
-// WELCOME SCREEN
+// AUTO TRANSITION
 setTimeout(()=>{
   document.getElementById("welcome").style.display="none";
-  document.getElementById("main").style.display="block";
+  document.getElementById("page1").classList.add("active");
 },3000);
-
-// TOGGLE
-function showSection(id){
-  document.querySelectorAll('.box').forEach(el=>el.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
 
 // COUNTDOWN
 const target=new Date("April 23, 2026").getTime();
@@ -174,102 +147,15 @@ setInterval(()=>{
   d+"d "+h+"h "+m+"m "+s+"s";
 },1000);
 
-</script>
-
-</body>
-</html>
-.container {padding:30px;}
-
-.countdown {
-  font-size:28px;
-  color:#00ffcc;
+// NEXT PAGE
+function nextPage(){
+  document.getElementById("page1").classList.remove("active");
+  document.getElementById("page2").classList.add("active");
 }
 
-.btn {
-  padding:12px 25px;
-  background:#00aaff;
-  border:none;
-  color:white;
-  cursor:pointer;
-}
-</style>
-</head>
-
-<body>
-
-<!-- Welcome Screen -->
-<div id="welcome" class="screen">
-  <h1>Welcome Madam President</h1>
-</div>
-
-<!-- Main Site -->
-<div id="main" class="hidden">
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#form">Submit</a>
-</nav>
-
-<div class="container">
-
-<h2>Official Countdown</h2>
-<div id="countdown" class="countdown"></div>
-
-<p>
-Tanishi Ji, Happy Birthday in Advance 🎉<br><br>
-Aapka gift carefully prepare kiya ja raha hai.<br>
-Isme logic, effort aur improvement add kiya gaya hai.<br><br>
-Yeh ek confidential surprise hai ❤️<br>
-Thoda wait karna hoga.
-</p>
-
-<button class="btn" onclick="goForm()">Enter Details</button>
-
-</div>
-
-<div id="form" class="container">
-<h2>Submit Details</h2>
-
-<input type="text" placeholder="Full Name"><br><br>
-<textarea placeholder="Full Address"></textarea><br><br>
-
-<button class="btn">Submit</button>
-
-<p>
-Happy Birthday in Advance Madam President 🎂<br>
-Surprises ke liye ready rahiye ❤️
-</p>
-
-</div>
-
-</div>
-
-<script>
-
-// welcome screen delay
-setTimeout(()=>{
-  document.getElementById("welcome").style.display="none";
-  document.getElementById("main").classList.remove("hidden");
-},3000);
-
-// countdown
-const target=new Date("April 23, 2026 00:00:00").getTime();
-
-setInterval(()=>{
-  const now=new Date().getTime();
-  const diff=target-now;
-
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
-  const s=Math.floor((diff%(1000*60))/1000);
-
-  document.getElementById("countdown").innerHTML=
-  d+"d "+h+"h "+m+"m "+s+"s";
-},1000);
-
-function goForm(){
-  document.getElementById("form").scrollIntoView({behavior:"smooth"});
+// EMAIL OPEN
+function sendMail(){
+  window.location.href = "mailto:mankitmankit7@gmail.com?subject=Address Submission&body=Enter your address here...";
 }
 
 </script>
