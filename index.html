@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome Madam President</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0b1a2f;
+  color:white;
+  text-align:center;
+}
+
+.screen {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hidden {display:none;}
+
+nav {
+  background:#122b4d;
+  padding:15px;
+  text-align:left;
+}
+
+nav a {
+  color:white;
+  margin-right:20px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container {padding:30px;}
+
+.countdown {
+  font-size:28px;
+  color:#00ffcc;
+}
+
+.btn {
+  padding:12px 25px;
+  background:#00aaff;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Welcome Screen -->
+<div id="welcome" class="screen">
+  <h1>Welcome Madam President</h1>
+</div>
+
+<!-- Main Site -->
+<div id="main" class="hidden">
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#form">Submit</a>
+</nav>
+
+<div class="container">
+
+<h2>Official Countdown</h2>
+<div id="countdown" class="countdown"></div>
+
+<p>
+Tanishi Ji, Happy Birthday in Advance 🎉<br><br>
+Aapka gift carefully prepare kiya ja raha hai.<br>
+Isme logic, effort aur improvement add kiya gaya hai.<br><br>
+Yeh ek confidential surprise hai ❤️<br>
+Thoda wait karna hoga.
+</p>
+
+<button class="btn" onclick="goForm()">Enter Details</button>
+
+</div>
+
+<div id="form" class="container">
+<h2>Submit Details</h2>
+
+<input type="text" placeholder="Full Name"><br><br>
+<textarea placeholder="Full Address"></textarea><br><br>
+
+<button class="btn">Submit</button>
+
+<p>
+Happy Birthday in Advance Madam President 🎂<br>
+Surprises ke liye ready rahiye ❤️
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+// welcome screen delay
+setTimeout(()=>{
+  document.getElementById("welcome").style.display="none";
+  document.getElementById("main").classList.remove("hidden");
+},3000);
+
+// countdown
+const target=new Date("April 23, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+  const now=new Date().getTime();
+  const diff=target-now;
+
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((diff%(1000*60*60))/(1000*60));
+  const s=Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById("countdown").innerHTML=
+  d+"d "+h+"h "+m+"m "+s+"s";
+},1000);
+
+function goForm(){
+  document.getElementById("form").scrollIntoView({behavior:"smooth"});
+}
+
+</script>
+
+</body>
+</html>
