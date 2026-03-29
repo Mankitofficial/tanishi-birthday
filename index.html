@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <title>Madam President</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Great+Vibes&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
 body {
   margin:0;
-  font-family:Poppins;
-  background:black;
-  color:white;
-  text-align:center;
+  background:#f9f9f9;
+  font-family:'Inter', sans-serif;
+  color:#111;
+  overflow-x:hidden;
 }
 
 /* WELCOME */
@@ -22,56 +22,87 @@ body {
   display:flex;
   justify-content:center;
   align-items:center;
+  flex-direction:column;
+  animation:fadeIn 2s ease;
 }
 
 #welcome h1 {
   font-family:'Great Vibes', cursive;
-  font-size:60px;
-  color:gold;
-  text-shadow:0 0 20px gold,0 0 40px gold,5px 5px 10px black;
+  font-size:70px;
+  color:#000;
+  text-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* PAGE */
+/* SECTIONS */
 .section {
   display:none;
-  padding:40px;
+  padding:60px 20px;
+  text-align:center;
 }
 
 .active {
   display:block;
+  animation:fadeUp 1s ease;
 }
 
-/* BOX */
-.box {
-  background:#111;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 0 20px gold;
+/* PREMIUM CARD */
+.card {
+  max-width:800px;
+  margin:auto;
+  padding:40px;
+  border-radius:25px;
+  background:white;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.08),
+    0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* HEADINGS */
+h2 {
+  font-family:'Playfair Display', serif;
+  font-size:36px;
+  margin-bottom:20px;
 }
 
 /* COUNTDOWN */
 .countdown {
-  font-size:32px;
-  color:gold;
-  margin:20px;
+  font-size:40px;
+  font-weight:600;
+  margin:20px 0;
 }
 
 /* BUTTON */
 .btn {
-  padding:12px 25px;
-  background:gold;
-  color:black;
+  padding:14px 30px;
+  background:#000;
+  color:white;
   border:none;
-  border-radius:10px;
+  border-radius:30px;
   cursor:pointer;
-  margin-top:20px;
+  font-size:16px;
+  transition:0.3s;
+}
+
+.btn:hover {
+  transform:scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* MESSAGE */
 .message {
-  max-width:800px;
-  margin:auto;
-  line-height:1.6;
+  line-height:1.8;
+  font-size:16px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(40px);}
+  to {opacity:1; transform:translateY(0);}
 }
 
 </style>
@@ -81,43 +112,47 @@ body {
 
 <!-- WELCOME -->
 <div id="welcome">
-  <h1>✨ Welcome Madam President ✨</h1>
+  <h1>Welcome Madam President</h1>
 </div>
 
-<!-- COUNTDOWN PAGE -->
+<!-- PAGE 1 -->
 <div id="page1" class="section">
 
-  <div class="box">
-    <h2>Countdown for the President Birthday 🎂</h2>
+  <div class="card">
+    <h2>Countdown for the President’s Birthday</h2>
     <div id="countdown" class="countdown"></div>
 
-    <button class="btn" onclick="nextPage()">Aage Chalein</button>
+    <button class="btn" onclick="nextPage()">Continue</button>
   </div>
 
 </div>
 
-<!-- MESSAGE PAGE -->
+<!-- PAGE 2 -->
 <div id="page2" class="section">
 
-  <div class="box message">
+  <div class="card message">
 
     <p>
     Madam President,  
-    Yeh message ek simple notification nahi hai, balki ek carefully crafted expression hai jo dedication, effort aur planning ka result hai. Aapke liye jo gift prepare kiya ja raha hai, woh sirf ek normal surprise nahi hai, balki usme technical precision, creativity aur emotional value teenon ka perfect combination include kiya gaya hai.  
+    This message is not just a simple note but a carefully crafted experience designed with precision, effort, and emotion. The gift being prepared for you is undergoing a highly detailed and technically refined process. It involves coordination, structured planning, and even secure layers of conceptual design to ensure that the final outcome is not just impressive but truly exceptional.  
 
-    Is gift ko banane ke liye multiple levels par kaam kiya ja raha hai — media coordination, structure planning, aur encryption level tak ki detailing bhi ensure ki ja rahi hai. Har element ko is tarah design kiya gaya hai ki woh unique ho, secure ho aur aapke liye truly special feel create kare.  
+    Every element is being reviewed and enhanced with attention to detail, ensuring that quality and uniqueness are maintained at the highest level. This is not just about creating a gift, but about building something meaningful — something that reflects effort, intelligence, and genuine care.  
 
-    Yeh process itna simple nahi hai jitna dikhta hai, kyunki har step mein accuracy aur perfection ka dhyan rakha gaya hai. Har small detail ko carefully analyse kiya gaya hai taaki final result flawless ho. Isme sirf effort hi nahi balki ek genuine intention aur care bhi reflect hoti hai.  
+    The preparation includes multiple stages where improvement and refinement are continuously applied. It is designed to deliver not just a moment of surprise, but a lasting memory that you will truly appreciate.  
 
-    Aapke liye yeh gift ek experience banane ki koshish hai, jo sirf ek object nahi balki ek yaad ban sake. Isliye thoda sa patience zaruri hai, kyunki jo prepare ho raha hai woh bilkul worth the wait hai.  
+    Therefore, a little patience is required, as what is being created is meant to be worth every second of the wait.  
 
     </p>
 
-    <p><b>Note:</b> Please apna address hume send kijiye taaki gift officially parcel kiya ja sake.</p>
+    <p><b>Note:</b> Please send your address to officially dispatch the gift.</p>
 
     <button class="btn" onclick="sendMail()">Send Address</button>
 
-    <p style="margin-top:20px;">Thank You Madam President ❤️</p>
+    <p style="margin-top:25px;">
+    Thank You Madam President ❤️<br><br>
+    Further details can be discussed with Bhai Mansi Ji,  
+    as we are not permitted to disclose more information here.
+    </p>
 
   </div>
 
@@ -155,7 +190,7 @@ function nextPage(){
 
 // EMAIL OPEN
 function sendMail(){
-  window.location.href = "mailto:mankitmankit7@gmail.com?subject=Address Submission&body=Enter your address here...";
+  window.location.href="mailto:mankitmankit7@gmail.com?subject=Address Submission&body=Enter your address here...";
 }
 
 </script>
