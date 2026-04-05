@@ -1,170 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Madam President</title>
+  <meta charset="UTF-8">
+  <title>Madam President</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Google Font (Cursive Royal Style) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#f3f4f6;
-  color:#222;
-}
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at center, #0a0a0a, #000000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      overflow: hidden;
+    }
 
-/* HEADER */
-.header{
-  background:linear-gradient(90deg,#1d4ed8,#06b6d4);
-  color:white;
-  padding:40px 20px;
-  text-align:center;
-}
+    /* Madam President Text */
+    .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      color: #ffffff;
+      letter-spacing: 3px;
+      opacity: 0;
+      white-space: nowrap;
+      border-right: 2px solid white;
+      overflow: hidden;
+      width: 0;
+    }
 
-.header h1{
-  font-family:'Playfair Display',serif;
-  font-size:38px;
-}
+    /* Typing Animation */
+    .typing {
+      animation: typing 3s steps(20, end) forwards, blink 0.7s infinite;
+      opacity: 1;
+    }
 
-/* CARD */
-.card{
-  background:white;
-  margin:20px;
-  padding:25px;
-  border-radius:18px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.08);
-}
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
 
-/* GOLD HIGHLIGHT */
-.highlight{
-  background:linear-gradient(90deg,#facc15,#fde68a);
-  padding:12px;
-  border-radius:10px;
-  margin-top:10px;
-  font-weight:500;
-}
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-/* HEADINGS */
-h2{
-  font-family:'Playfair Display',serif;
-  font-size:26px;
-  margin-bottom:10px;
-}
+    /* Message Box */
+    .message-box {
+      margin-top: 40px;
+      text-align: center;
+      opacity: 0;
+      transition: 1s;
+    }
 
-/* COUNTDOWN */
-.countdown{
-  font-size:32px;
-  font-weight:bold;
-  margin:15px 0;
-}
+    .message-box.show {
+      opacity: 1;
+    }
 
-/* BUTTON */
-.btn{
-  background:#facc15;
-  border:none;
-  padding:12px 25px;
-  border-radius:25px;
-  cursor:pointer;
-  font-weight:bold;
-  margin-top:15px;
-}
+    .message {
+      font-size: 20px;
+      color: #ddd;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
 
-/* HIDDEN */
-.hidden{
-  display:none;
-}
+    /* Button */
+    .btn {
+      padding: 12px 30px;
+      font-size: 16px;
+      border: 1px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
 
-</style>
+    .btn:hover {
+      background: white;
+      color: black;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <h1>Welcome Madam President</h1>
-  <p>Official Special Access Portal</p>
-</div>
+  <div class="title" id="title">Madam President</div>
 
-<!-- COUNTDOWN SECTION -->
-<div id="page1" class="card">
-
-  <h2>Countdown for the President’s Birthday 🎂</h2>
-
-  <div id="countdown" class="countdown"></div>
-
-  <div class="highlight">
-    A special surprise is under preparation with premium quality & precision.
+  <div class="message-box" id="messageBox">
+    <div class="message">Attention: This experience is exclusive.</div>
+    <button class="btn">Continue</button>
   </div>
 
-  <button class="btn" onclick="nextPage()">Continue →</button>
+  <script>
+    // Start typing after 3 seconds
+    setTimeout(() => {
+      document.getElementById("title").classList.add("typing");
+    }, 3000);
 
-</div>
-
-<!-- MESSAGE SECTION -->
-<div id="page2" class="card hidden">
-
-  <h2>Confidential Message</h2>
-
-  <p>
-  Madam President,  
-  This is not just a message but a carefully structured experience.  
-  Your gift is being prepared with technical precision, creative enhancement, and secure planning.  
-
-  Multiple stages of development are involved including coordination with media-level execution and structured improvements.  
-  Every detail is being refined to ensure the final outcome is not just impressive but meaningful.  
-
-  This effort carries both logic and emotion, making it more than just a simple surprise.  
-  It is designed to create a memorable experience for you.  
-
-  Therefore, a little patience is requested as the preparation is ongoing at a premium level.  
-  </p>
-
-  <div class="highlight">
-    📌 Note: Please send your address to officially dispatch the gift.
-  </div>
-
-  <button class="btn" onclick="sendMail()">Send Address</button>
-
-  <div class="highlight" style="margin-top:20px;">
-    Thank You Madam President ❤️ <br><br>
-    For further details, please discuss with <b>Mankit Bhai</b>.  
-    We are not permitted to disclose more information here.
-  </div>
-
-</div>
-
-<script>
-
-// COUNTDOWN
-const target=new Date("April 23, 2026").getTime();
-
-setInterval(()=>{
-  const now=new Date().getTime();
-  const diff=target-now;
-
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
-  const s=Math.floor((diff%(1000*60))/1000);
-
-  document.getElementById("countdown").innerHTML =
-  d+"d "+h+"h "+m+"m "+s+"s";
-},1000);
-
-// NEXT PAGE
-function nextPage(){
-  document.getElementById("page1").classList.add("hidden");
-  document.getElementById("page2").classList.remove("hidden");
-}
-
-// EMAIL
-function sendMail(){
-  window.location.href="mailto:mankitmankit7@gmail.com?subject=Address Submission&body=Enter your address here...";
-}
-
-</script>
+    // Show message after typing ends
+    setTimeout(() => {
+      document.getElementById("messageBox").classList.add("show");
+    }, 6500);
+  </script>
 
 </body>
 </html>
