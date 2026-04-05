@@ -7,11 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Inter',sans-serif;
@@ -27,12 +23,12 @@ body{
   align-items:center;
   flex-direction:column;
   background:white;
+  text-align:center;
 }
 
 .title{
   font-family:'Great Vibes',cursive;
   font-size:60px;
-  color:#111;
   opacity:0;
   border-right:2px solid black;
   white-space:nowrap;
@@ -54,6 +50,13 @@ body{
   50%{border-color:transparent}
 }
 
+.big-banner{
+  margin-top:20px;
+  font-size:18px;
+  font-weight:600;
+  color:#6c5ce7;
+}
+
 .btn{
   margin-top:30px;
   padding:14px 40px;
@@ -61,7 +64,6 @@ body{
   color:white;
   border:none;
   border-radius:12px;
-  font-size:16px;
   cursor:pointer;
 }
 
@@ -71,9 +73,7 @@ body{
   padding:20px;
 }
 
-.show{
-  display:block;
-}
+.show{display:block;}
 
 /* CARD */
 .card{
@@ -88,6 +88,14 @@ body{
 .heading{
   font-size:22px;
   font-weight:600;
+  margin-bottom:10px;
+}
+
+/* BIG TEXT */
+.big-text{
+  font-size:20px;
+  font-weight:700;
+  color:#6c5ce7;
   margin-bottom:10px;
 }
 
@@ -112,13 +120,12 @@ body{
   font-weight:bold;
 }
 
-/* CALL OUT */
+/* CALLOUT */
 .callout{
   background:#eef2ff;
   padding:15px;
   border-left:4px solid #6c5ce7;
   border-radius:10px;
-  margin-top:10px;
 }
 
 /* TOGGLE */
@@ -173,66 +180,67 @@ body{
 <!-- HERO -->
 <div class="hero">
   <div class="title" id="title">Madam President</div>
+  <div class="big-banner">
+    Happy Birthday in Advance Madam President Tanishi ji
+  </div>
   <button class="btn" onclick="enter()">Continue</button>
 </div>
 
 <!-- MAIN -->
 <div class="main" id="main">
 
-  <!-- CALL OUT 1 -->
+  <!-- CALL OUT -->
   <div class="card">
-    <div class="heading">📢 Special Announcement</div>
+    <div class="big-text">Happy Birthday in Advance Madam President Tanishi ji</div>
     <div class="callout">
-      A premium experience is being prepared exclusively for you.
+      A premium encrypted experience is being prepared exclusively.
     </div>
   </div>
 
   <!-- COUNTDOWN -->
   <div class="card">
+    <div class="big-text">Happy Birthday in Advance Madam President Tanishi ji</div>
     <div class="heading">⏳ 23 April 2026 Countdown</div>
 
     <div class="countdown">
-      <div class="box"><span id="d">00</span><br>Days</div>
-      <div class="box"><span id="h">00</span><br>Hours</div>
-      <div class="box"><span id="m">00</span><br>Minutes</div>
-      <div class="box"><span id="s">00</span><br>Seconds</div>
+      <div class="box"><span id="d">00</span>Days</div>
+      <div class="box"><span id="h">00</span>Hours</div>
+      <div class="box"><span id="m">00</span>Minutes</div>
+      <div class="box"><span id="s">00</span>Seconds</div>
     </div>
   </div>
 
-  <!-- CALL OUT 2 -->
+  <!-- PROCESS -->
   <div class="card">
-    <div class="heading">✨ Premium Process</div>
+    <div class="big-text">Happy Birthday in Advance Madam President Tanishi ji</div>
     <div class="callout">
-      This message is being crafted using secure encryption & elite personalization systems.
+      Secure encryption, premium systems & elite personalization are active.
     </div>
   </div>
 
-  <!-- TOGGLE MESSAGE -->
+  <!-- MESSAGE -->
   <div class="card">
+    <div class="big-text">Happy Birthday in Advance Madam President Tanishi ji</div>
     <div class="heading">📜 Official Message</div>
 
     <div class="toggle" onclick="toggleMsg()">
-      Show Official Message to Madam President
+      Show Message
     </div>
 
     <div class="hidden" id="msg">
       <p class="message">
-
 Madam President,
 
-This message is being prepared through a highly refined and secure system designed exclusively for you. Advanced end-to-end encryption protocols are actively in place, ensuring that every detail remains protected and untouched.
+This message is being crafted using secure end-to-end encryption systems with premium personalization layers. Every detail is carefully processed to create a meaningful birthday experience.
 
-The process is not ordinary — it is premium, layered with intelligent systems that carefully structure each word, each emotion, and each presentation element. This is not just a message, but an experience being crafted with precision.
-
-Every stage involves validation, personalization, and secure handling to deliver something truly meaningful. The intention is to create a birthday message that feels rare, personal, and worthy of your presence.
-
-This system ensures that what reaches you is not just information — it is a feeling, an impact, and a moment.
+This is not just a message — it is an emotion designed with precision and elegance.
 
       </p>
 
+      <!-- EMAIL BUTTON (WEB + APP) -->
       <a class="email-btn"
-      href="mailto:mankitmankit7@gmail.com?subject=Details Submission&body=Name:%0AAddress:%0ASpecial Note:">
-      Send Your Details
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=mankitmankit7@gmail.com&su=Details Submission&body=Name:%0AAddress:%0ASpecial Note:%0APhoto:">
+      Send Your Details (with Photo)
       </a>
 
     </div>
