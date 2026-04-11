@@ -112,11 +112,27 @@ th{ background:#002147; color:white; }
 <button onclick="window.print()">Download Scorecard</button>
 
 </div><script>
-const database = {
-    "2001": {name:"Rahul", dob:"2006-05-10", class:"Class 11", phy:80, chem:70, math:75},
-    "2002": {name:"Aman", dob:"2005-11-21", class:"Class 12", phy:60, chem:65, math:55},
-    "2003": {name:"Sneha", dob:"2006-01-02", class:"Class 10", phy:90, chem:88, math:85}
-};
+// Dynamic result generator (no invalid roll)
+function generateResult(roll, name, dob, cls){
+    // Seed based on roll number (same roll = same result)
+    let seed = 0;
+    for(let i=0;i<roll.length;i++) seed += roll.charCodeAt(i);
+
+    function rand(min, max){
+        seed = (seed * 9301 + 49297) % 233280;
+        let rnd = seed / 233280;
+        return Math.floor(min + rnd * (max - min));
+    }
+
+    return {
+        name: name,
+        dob: dob,
+        class: cls,
+        phy: rand(40,100),
+        chem: rand(40,100),
+        math: rand(40,100)
+    };
+}
 
 function showResult(){
     let roll = document.getElementById("roll").value;
@@ -124,46 +140,16 @@ function showResult(){
     let dob = document.getElementById("dob").value;
     let cls = document.getElementById("class").value;
 
-    if(!database[roll]){
-        alert("Invalid Roll Number");
+    if(roll===""||name===""||dob===""||cls===""){
+        alert("Please fill all details");
         return;
     }
 
-    let s = database[roll];
-
-    if(s.dob !== dob || s.name.toLowerCase() !== name.toLowerCase() || s.class !== cls){
-        alert("Details mismatch");
-        return;
-    }
+    let s = generateResult(roll, name, dob, cls);
 
     let total = s.phy + s.chem + s.math;
     let percentile = (total/300*100).toFixed(2);
-    let rank = Math.floor((300-total)*120);
-
-    document.getElementById("rName").innerText = s.name;
-    document.getElementById("rRoll").innerText = roll;
-    document.getElementById("rDob").innerText = dob;
-    document.getElementById("rClass").innerText = cls;
-    document.getElementById("app").innerText = "PR2026"+roll;
-
-    document.getElementById("phy").innerText = s.phy;
-    document.getElementById("chem").innerText = s.chem;
-    document.getElementById("math").innerText = s.math;
-
-    document.getElementById("total").innerText = total;
-    document.getElementById("percentile").innerText = percentile;
-    document.getElementById("rank").innerText = rank;
-
-    let statusEl = document.getElementById("status");
-    if(percentile>=90){
-        statusEl.innerText="Qualified";
-        statusEl.className="badge pass";
-    } else {
-        statusEl.innerText="Not Qualified";
-        statusEl.className="badge fail";
-    }
-
-    document.getElementById("formBox").style.display="none";
+    let rank = Math.floor((300
     document.getElementById("resultBox").style.display="block";
 }
 </script></body>
