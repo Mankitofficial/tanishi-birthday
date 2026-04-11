@@ -6,30 +6,31 @@
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:#eef2f7;
+    background:linear-gradient(135deg,#e3f2fd,#f5f7fa);
 }
 .header{
     background:#002147;
     color:white;
-    padding:18px;
+    padding:20px;
     text-align:center;
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
+    letter-spacing:1px;
 }
 .container{
     max-width:750px;
     margin:30px auto;
     background:white;
     padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 input, select{
     width:100%;
     padding:12px;
     margin:10px 0;
     border:1px solid #ccc;
-    border-radius:5px;
+    border-radius:6px;
     font-size:16px;
 }
 button{
@@ -40,6 +41,8 @@ button{
     border:none;
     font-size:16px;
     cursor:pointer;
+    border-radius:6px;
+    font-weight:bold;
 }
 button:hover{ background:#003b7a; }
 
@@ -80,7 +83,7 @@ th{ background:#002147; color:white; }
 <button onclick="showResult()">View Result</button>
 
 </div><div class="container result-box" id="resultBox">
-    <h3>Score Card</h3><table>
+    <h2 style="text-align:center;">Score Card</h2><table>
     <tr><th>Name</th><td id="rName"></td></tr>
     <tr><th>Roll Number</th><td id="rRoll"></td></tr>
     <tr><th>Date of Birth</th><td id="rDob"></td></tr>
@@ -109,11 +112,10 @@ th{ background:#002147; color:white; }
     <b>Status:</b> <span id="status" class="badge"></span>
 </div>
 
-<button onclick="window.print()">Download Scorecard</button>
+<button onclick="window.print()">Download Scorecard (PDF)</button>
 
 </div><script>
-// Dynamic result generator (no invalid roll)
-function generateResult(roll, name, dob, cls){
+function generateResult(roll){
     let seed = 0;
     for(let i=0;i<roll.length;i++) seed += roll.charCodeAt(i);
 
@@ -124,9 +126,6 @@ function generateResult(roll, name, dob, cls){
     }
 
     return {
-        name: name,
-        dob: dob,
-        class: cls,
         phy: rand(40,100),
         chem: rand(40,100),
         math: rand(40,100)
@@ -144,21 +143,21 @@ function showResult(){
         return;
     }
 
-    let s = generateResult(roll, name, dob, cls);
+    let marks = generateResult(roll);
 
-    let total = s.phy + s.chem + s.math;
+    let total = marks.phy + marks.chem + marks.math;
     let percentile = (total/300*100).toFixed(2);
     let rank = Math.floor((300-total)*120);
 
-    document.getElementById("rName").innerText = s.name;
+    document.getElementById("rName").innerText = name;
     document.getElementById("rRoll").innerText = roll;
     document.getElementById("rDob").innerText = dob;
     document.getElementById("rClass").innerText = cls;
     document.getElementById("app").innerText = "PR2026"+roll;
 
-    document.getElementById("phy").innerText = s.phy;
-    document.getElementById("chem").innerText = s.chem;
-    document.getElementById("math").innerText = s.math;
+    document.getElementById("phy").innerText = marks.phy;
+    document.getElementById("chem").innerText = marks.chem;
+    document.getElementById("math").innerText = marks.math;
 
     document.getElementById("total").innerText = total;
     document.getElementById("percentile").innerText = percentile;
@@ -174,7 +173,6 @@ function showResult(){
     }
 
     document.getElementById("formBox").style.display="none";
-    document.getElementById("resultBox").style.display="block";
     document.getElementById("resultBox").style.display="block";
 }
 </script></body>
