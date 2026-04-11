@@ -2,110 +2,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prerana Institute Entrance Exam Result</title><style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+<title>NTA Style Result - Prerana Institute</title><style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+}
 
-    .container {
-        background: rgba(255,255,255,0.05);
-        padding: 40px;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        width: 350px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    }
+.header {
+    background: #002147;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-    h1 {
-        text-align: center;
-        font-size: 22px;
-        margin-bottom: 20px;
-    }
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
-    input {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        font-size: 16px;
-    }
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 15px;
-        border: none;
-        border-radius: 10px;
-        background: #00c6ff;
-        color: black;
-        font-size: 18px;
-        cursor: pointer;
-        font-weight: bold;
-    }
+button {
+    width: 100%;
+    padding: 12px;
+    background: #002147;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    button:hover {
-        background: #00a2d3;
-    }
+button:hover { background: #003b7a; }
 
-    .result-box {
-        display: none;
-        text-align: center;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-    .big {
-        font-size: 26px;
-        margin: 10px 0;
-    }
+table, th, td {
+    border: 1px solid #ddd;
+}
 
-    .highlight {
-        font-size: 30px;
-        color: #00ffcc;
-        font-weight: bold;
-    }
-</style></head><body><div class="container" id="formBox">
-    <h1>Prerana Institute Entrance Exam</h1><input type="text" id="roll" placeholder="Enter Roll Number">
-<input type="date" id="examDate">
-<input type="date" id="dob">
+th, td {
+    padding: 10px;
+    text-align: left;
+}
 
-<button onclick="showResult()">See Result</button>
+th {
+    background: #002147;
+    color: white;
+}
 
+.result-box { display: none; }
+
+.cutoff {
+    margin-top: 20px;
+    background: #e8f0fe;
+    padding: 15px;
+    border-radius: 8px;
+}
+</style></head><body><div class="header">
+    Prerana Institute Entrance Examination Result (NTA Style)
+</div><div class="container" id="formBox">
+    <input type="text" id="roll" placeholder="Roll Number">
+    <input type="date" id="dob">
+    <button onclick="showResult()">Submit</button>
 </div><div class="container result-box" id="resultBox">
-    <h1>Result</h1><div class="big">Exam: Prerana Institute Entrance Exam</div>
-<div class="big">Roll Number: <span id="rRoll"></span></div>
+    <h3>Score Card</h3><table>
+    <tr><th>Name</th><td id="name"></td></tr>
+    <tr><th>Roll Number</th><td id="rRoll"></td></tr>
+    <tr><th>Date of Birth</th><td id="rDob"></td></tr>
+    <tr><th>Application No</th><td>PR2026XXXX</td></tr>
+</table>
 
-<div class="big">Percentile</div>
-<div class="highlight" id="percentile"></div>
+<h3>Marks Details</h3>
 
-<div class="big">All India Rank</div>
-<div class="highlight" id="rank"></div>
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Percentile</th>
+    </tr>
+    <tr>
+        <td>Physics</td>
+        <td id="phy"></td>
+        <td id="phyP"></td>
+    </tr>
+    <tr>
+        <td>Chemistry</td>
+        <td id="chem"></td>
+        <td id="chemP"></td>
+    </tr>
+    <tr>
+        <td>Mathematics</td>
+        <td id="math"></td>
+        <td id="mathP"></td>
+    </tr>
+</table>
+
+<h3>Overall</h3>
+
+<table>
+    <tr><th>Total Score</th><td id="total"></td></tr>
+    <tr><th>Percentile</th><td id="percentile"></td></tr>
+    <tr><th>All India Rank</th><td id="rank"></td></tr>
+</table>
+
+<div class="cutoff">
+    <h4>Cutoff (Expected)</h4>
+    <p>General: 90 Percentile</p>
+    <p>OBC: 75 Percentile</p>
+    <p>SC: 55 Percentile</p>
+    <p>ST: 45 Percentile</p>
+    <p>EWS: 85 Percentile</p>
+    <p><b>Status:</b> <span id="status"></span></p>
+</div>
+
+<button onclick="window.print()">Download Scorecard</button>
 
 </div><script>
 function showResult() {
     let roll = document.getElementById("roll").value;
-    let examDate = document.getElementById("examDate").value;
     let dob = document.getElementById("dob").value;
 
-    if(roll === "" || examDate === "" || dob === "") {
-        alert("Please fill all details");
+    if(roll === "" || dob === "") {
+        alert("Enter details");
         return;
     }
 
-    // Fake calculation
-    let percentile = (Math.random() * 40 + 60).toFixed(2);
-    let rank = Math.floor(Math.random() * 50000 + 1000);
+    // Demo database
+    let name = "Mankit";
 
+    let phy = Math.floor(Math.random()*100);
+    let chem = Math.floor(Math.random()*100);
+    let math = Math.floor(Math.random()*100);
+
+    let total = phy + chem + math;
+    let percentile = (total/300*100).toFixed(2);
+    let rank = Math.floor((300-total)*120);
+
+    document.getElementById("name").innerText = name;
     document.getElementById("rRoll").innerText = roll;
-    document.getElementById("percentile").innerText = percentile + "%";
+    document.getElementById("rDob").innerText = dob;
+
+    document.getElementById("phy").innerText = phy;
+    document.getElementById("chem").innerText = chem;
+    document.getElementById("math").innerText = math;
+
+    document.getElementById("phyP").innerText = (phy).toFixed(2);
+    document.getElementById("chemP").innerText = (chem).toFixed(2);
+    document.getElementById("mathP").innerText = (math).toFixed(2);
+
+    document.getElementById("total").innerText = total;
+    document.getElementById("percentile").innerText = percentile;
     document.getElementById("rank").innerText = rank;
+
+    let status = percentile >= 90 ? "Qualified" : "Not Qualified";
+    document.getElementById("status").innerText = status;
 
     document.getElementById("formBox").style.display = "none";
     document.getElementById("resultBox").style.display = "block";
