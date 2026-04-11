@@ -2,28 +2,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NTA Style Result - Prerana Institute</title><style>
-body { margin:0; font-family: Arial; background:#f0f2f5; }
-.header { background:#002147; color:white; padding:15px; text-align:center; font-size:22px; }
-.container { max-width:700px; margin:30px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2);} 
-input { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px; }
-button { width:100%; padding:12px; background:#002147; color:white; border:none; font-size:16px; cursor:pointer; }
-button:hover { background:#003b7a; }
-table { width:100%; border-collapse: collapse; margin-top:20px; }
-table, th, td { border:1px solid #ddd; }
-th, td { padding:10px; }
-th { background:#002147; color:white; }
-.result-box { display:none; }
-.cutoff { margin-top:20px; background:#e8f0fe; padding:15px; border-radius:8px; }
-</style></head><body><div class="header">Prerana Institute Entrance Examination Result</div><div class="container" id="formBox">
-    <input type="text" id="roll" placeholder="Roll Number">
-    <input type="date" id="dob">
-    <button onclick="showResult()">Submit</button>
+<title>Prerana Result Portal</title><style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#eef2f7;
+}
+.header{
+    background:#002147;
+    color:white;
+    padding:18px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+.container{
+    max-width:750px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+input, select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:16px;
+}
+button{
+    width:100%;
+    padding:12px;
+    background:#002147;
+    color:white;
+    border:none;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{ background:#003b7a; }
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+table, th, td{ border:1px solid #ddd; }
+th, td{ padding:10px; }
+th{ background:#002147; color:white; }
+
+.result-box{ display:none; }
+.cutoff{
+    margin-top:20px;
+    background:#e8f0fe;
+    padding:15px;
+    border-radius:8px;
+}
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
+.pass{ background:green; color:white; }
+.fail{ background:red; color:white; }
+</style></head><body><div class="header">Prerana Institute Entrance Examination 2026 Result</div><div class="container" id="formBox">
+    <input type="text" id="roll" placeholder="Enter Roll Number">
+    <input type="text" id="name" placeholder="Enter Name">
+    <input type="date" id="dob"><select id="class">
+    <option value="">Select Class</option>
+    <option>Class 9</option>
+    <option>Class 10</option>
+    <option>Class 11</option>
+    <option>Class 12</option>
+</select>
+
+<button onclick="showResult()">View Result</button>
+
 </div><div class="container result-box" id="resultBox">
     <h3>Score Card</h3><table>
-    <tr><th>Name</th><td id="name"></td></tr>
+    <tr><th>Name</th><td id="rName"></td></tr>
     <tr><th>Roll Number</th><td id="rRoll"></td></tr>
     <tr><th>Date of Birth</th><td id="rDob"></td></tr>
+    <tr><th>Class</th><td id="rClass"></td></tr>
     <tr><th>Application No</th><td id="app"></td></tr>
 </table>
 
@@ -35,52 +96,54 @@ th { background:#002147; color:white; }
     <tr><td>Mathematics</td><td id="math"></td></tr>
 </table>
 
-<h3>Overall</h3>
+<h3>Overall Performance</h3>
 <table>
-    <tr><th>Total</th><td id="total"></td></tr>
+    <tr><th>Total Score</th><td id="total"></td></tr>
     <tr><th>Percentile</th><td id="percentile"></td></tr>
-    <tr><th>Rank</th><td id="rank"></td></tr>
+    <tr><th>All India Rank</th><td id="rank"></td></tr>
 </table>
 
 <div class="cutoff">
     <b>Cutoff (Expected)</b><br>
-    General: 90 | OBC: 75 | SC: 55 | ST: 45 | EWS: 85<br>
-    <b>Status:</b> <span id="status"></span>
+    General: 90 | EWS: 85 | OBC: 75 | SC: 55 | ST: 45<br><br>
+    <b>Status:</b> <span id="status" class="badge"></span>
 </div>
 
-<button onclick="window.print()">Download</button>
+<button onclick="window.print()">Download Scorecard</button>
 
 </div><script>
-// Fake database
-const students = {
-    "101": {name:"Rahul", dob:"2006-05-10", phy:70, chem:65, math:80},
-    "102": {name:"Aman", dob:"2005-11-21", phy:50, chem:60, math:55},
-    "103": {name:"Sneha", dob:"2006-01-02", phy:90, chem:88, math:95}
+const database = {
+    "2001": {name:"Rahul", dob:"2006-05-10", class:"Class 11", phy:80, chem:70, math:75},
+    "2002": {name:"Aman", dob:"2005-11-21", class:"Class 12", phy:60, chem:65, math:55},
+    "2003": {name:"Sneha", dob:"2006-01-02", class:"Class 10", phy:90, chem:88, math:85}
 };
 
 function showResult(){
     let roll = document.getElementById("roll").value;
+    let name = document.getElementById("name").value;
     let dob = document.getElementById("dob").value;
+    let cls = document.getElementById("class").value;
 
-    if(!students[roll]){
+    if(!database[roll]){
         alert("Invalid Roll Number");
         return;
     }
 
-    let s = students[roll];
+    let s = database[roll];
 
-    if(s.dob !== dob){
-        alert("DOB mismatch");
+    if(s.dob !== dob || s.name.toLowerCase() !== name.toLowerCase() || s.class !== cls){
+        alert("Details mismatch");
         return;
     }
 
     let total = s.phy + s.chem + s.math;
     let percentile = (total/300*100).toFixed(2);
-    let rank = Math.floor((300-total)*100);
+    let rank = Math.floor((300-total)*120);
 
-    document.getElementById("name").innerText = s.name;
+    document.getElementById("rName").innerText = s.name;
     document.getElementById("rRoll").innerText = roll;
     document.getElementById("rDob").innerText = dob;
+    document.getElementById("rClass").innerText = cls;
     document.getElementById("app").innerText = "PR2026"+roll;
 
     document.getElementById("phy").innerText = s.phy;
@@ -91,7 +154,14 @@ function showResult(){
     document.getElementById("percentile").innerText = percentile;
     document.getElementById("rank").innerText = rank;
 
-    document.getElementById("status").innerText = percentile>=90?"Qualified":"Not Qualified";
+    let statusEl = document.getElementById("status");
+    if(percentile>=90){
+        statusEl.innerText="Qualified";
+        statusEl.className="badge pass";
+    } else {
+        statusEl.innerText="Not Qualified";
+        statusEl.className="badge fail";
+    }
 
     document.getElementById("formBox").style.display="none";
     document.getElementById("resultBox").style.display="block";
