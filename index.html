@@ -1,179 +1,131 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prerana Result Portal</title><style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#e3f2fd,#f5f7fa);
-}
-.header{
-    background:#002147;
-    color:white;
-    padding:20px;
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-.container{
-    max-width:750px;
-    margin:30px auto;
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-input, select{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:16px;
-}
-button{
-    width:100%;
-    padding:12px;
-    background:#002147;
-    color:white;
-    border:none;
-    font-size:16px;
-    cursor:pointer;
-    border-radius:6px;
-    font-weight:bold;
-}
-button:hover{ background:#003b7a; }
+<title>Birthday Wish</title>
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
 }
-table, th, td{ border:1px solid #ddd; }
-th, td{ padding:10px; }
-th{ background:#002147; color:white; }
 
-.result-box{ display:none; }
-.cutoff{
-    margin-top:20px;
-    background:#e8f0fe;
-    padding:15px;
-    border-radius:8px;
+/* COMMON STYLE */
+.screen {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #ffffff, #f3f3f3);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-.badge{
-    padding:6px 12px;
-    border-radius:20px;
-    font-weight:bold;
+
+/* FIRST SCREEN */
+#screen1 h1 {
+    font-size: 32px;
+    opacity: 0;
+    animation: fadeIn 4s ease forwards;
 }
-.pass{ background:green; color:white; }
-.fail{ background:red; color:white; }
-</style></head><body><div class="header">Prerana Institute Entrance Examination 2026 Result</div><div class="container" id="formBox">
-    <input type="text" id="roll" placeholder="Enter Roll Number">
-    <input type="text" id="name" placeholder="Enter Name">
-    <input type="date" id="dob"><select id="class">
-    <option value="">Select Class</option>
-    <option>Class 9</option>
-    <option>Class 10</option>
-    <option>Class 11</option>
-    <option>Class 12</option>
-</select>
 
-<button onclick="showResult()">View Result</button>
+/* SECOND SCREEN */
+#screen2 {
+    display: none;
+    text-align: center;
+}
 
-</div><div class="container result-box" id="resultBox">
-    <h2 style="text-align:center;">Score Card</h2><table>
-    <tr><th>Name</th><td id="rName"></td></tr>
-    <tr><th>Roll Number</th><td id="rRoll"></td></tr>
-    <tr><th>Date of Birth</th><td id="rDob"></td></tr>
-    <tr><th>Class</th><td id="rClass"></td></tr>
-    <tr><th>Application No</th><td id="app"></td></tr>
-</table>
+#screen2 h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
 
-<h3>Marks Details</h3>
-<table>
-    <tr><th>Subject</th><th>Marks</th></tr>
-    <tr><td>Physics</td><td id="phy"></td></tr>
-    <tr><td>Chemistry</td><td id="chem"></td></tr>
-    <tr><td>Mathematics</td><td id="math"></td></tr>
-</table>
+#screen2 p {
+    font-size: 18px;
+    color: #444;
+    max-width: 80%;
+}
 
-<h3>Overall Performance</h3>
-<table>
-    <tr><th>Total Score</th><td id="total"></td></tr>
-    <tr><th>Percentile</th><td id="percentile"></td></tr>
-    <tr><th>All India Rank</th><td id="rank"></td></tr>
-</table>
+/* PASSWORD BOX */
+.password-box {
+    position: absolute;
+    bottom: 40px;
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
 
-<div class="cutoff">
-    <b>Cutoff (Expected)</b><br>
-    General: 90 | EWS: 85 | OBC: 75 | SC: 55 | ST: 45<br><br>
-    <b>Status:</b> <span id="status" class="badge"></span>
+.password-box input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+.password-box button {
+    margin-top: 10px;
+    padding: 8px 20px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SCREEN 1 -->
+<div class="screen" id="screen1">
+    <h1>Happy Birthday Madam President Tanishi Jii ✨</h1>
+
+    <div class="password-box">
+        <p>Enter Passkey To Continue</p>
+        <input type="password" id="pass" placeholder="Enter Password">
+        <br>
+        <button onclick="checkPass()">Continue</button>
+    </div>
 </div>
 
-<button onclick="window.print()">Download Scorecard (PDF)</button>
+<!-- SCREEN 2 -->
+<div class="screen" id="screen2">
+    <h1>Happy Birthday Tanishi G 🎉</h1>
+    <p>
+        Aaj ka din sirf ek date nahi hai, balki ek aisi personality ka celebration hai  
+        jo positivity, strength aur inspiration ka perfect example hai.  
+        Always keep shining and making everyone proud ✨
+    </p>
+</div>
 
-</div><script>
-function generateResult(roll){
-    let seed = 0;
-    for(let i=0;i<roll.length;i++) seed += roll.charCodeAt(i);
+<script>
+function checkPass() {
+    let userPass = document.getElementById("pass").value;
 
-    function rand(min, max){
-        seed = (seed * 9301 + 49297) % 233280;
-        let rnd = seed / 233280;
-        return Math.floor(min + rnd * (max - min));
-    }
-
-    return {
-        phy: rand(40,100),
-        chem: rand(40,100),
-        math: rand(40,100)
-    };
-}
-
-function showResult(){
-    let roll = document.getElementById("roll").value;
-    let name = document.getElementById("name").value;
-    let dob = document.getElementById("dob").value;
-    let cls = document.getElementById("class").value;
-
-    if(roll===""||name===""||dob===""||cls===""){
-        alert("Please fill all details");
-        return;
-    }
-
-    let marks = generateResult(roll);
-
-    let total = marks.phy + marks.chem + marks.math;
-    let percentile = (total/300*100).toFixed(2);
-    let rank = Math.floor((300-total)*120);
-
-    document.getElementById("rName").innerText = name;
-    document.getElementById("rRoll").innerText = roll;
-    document.getElementById("rDob").innerText = dob;
-    document.getElementById("rClass").innerText = cls;
-    document.getElementById("app").innerText = "PR2026"+roll;
-
-    document.getElementById("phy").innerText = marks.phy;
-    document.getElementById("chem").innerText = marks.chem;
-    document.getElementById("math").innerText = marks.math;
-
-    document.getElementById("total").innerText = total;
-    document.getElementById("percentile").innerText = percentile;
-    document.getElementById("rank").innerText = rank;
-
-    let statusEl = document.getElementById("status");
-    if(percentile>=90){
-        statusEl.innerText="Qualified";
-        statusEl.className="badge pass";
+    if(userPass === "MMTG231803") {
+        document.getElementById("screen1").style.display = "none";
+        document.getElementById("screen2").style.display = "flex";
     } else {
-        statusEl.innerText="Not Qualified";
-        statusEl.className="badge fail";
+        alert("Wrong Password ❌");
     }
-
-    document.getElementById("formBox").style.display="none";
-    document.getElementById("resultBox").style.display="block";
 }
-</script></body>
+</script>
+
+</body>
 </html>
