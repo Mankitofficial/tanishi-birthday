@@ -8,14 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin:0;
-    font-family:'Poppins',sans-serif;
-}
+body { margin:0; font-family:'Poppins',sans-serif; }
 
-/* COMMON SCREEN */
+/* SCREEN */
 .screen {
-    height:100vh;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -29,7 +26,6 @@ body {
     color:#d4af37;
 }
 
-/* FADE TEXT */
 .fade-text {
     font-family:'Playfair Display';
     font-size:34px;
@@ -37,11 +33,8 @@ body {
     animation:fadeIn 3s ease forwards;
 }
 
-@keyframes fadeIn {
-    to { opacity:1; transform:translateY(0); }
-}
+@keyframes fadeIn { to { opacity:1; } }
 
-/* PASSWORD BOX */
 .pass-box {
     margin-top:40px;
     background:rgba(255,255,255,0.1);
@@ -54,7 +47,6 @@ body {
     padding:10px;
     border:none;
     border-radius:8px;
-    outline:none;
     text-align:center;
 }
 
@@ -70,7 +62,7 @@ body {
 /* SECOND SCREEN */
 #screen2 {
     display:none;
-    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
     url('https://images.unsplash.com/photo-1513151233558-d860c5398176');
     background-size:cover;
     background-position:center;
@@ -87,13 +79,13 @@ body {
 /* COUNTDOWN */
 .countdown {
     margin-top:20px;
-    font-size:20px;
+    font-size:18px;
     background:rgba(0,0,0,0.4);
     padding:10px 20px;
     border-radius:10px;
 }
 
-/* QR SECTION */
+/* QR */
 .qr-container {
     margin-top:25px;
     width:100%;
@@ -102,16 +94,12 @@ body {
 
 .qr-box {
     background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(10px);
     padding:15px;
     border-radius:15px;
     margin-top:15px;
 }
 
-.qr-box img {
-    width:140px;
-    margin:10px 0;
-}
+.qr-box img { width:140px; }
 
 /* BUTTON */
 .access-btn {
@@ -121,8 +109,34 @@ body {
     color:black;
     border-radius:8px;
     text-decoration:none;
-    font-weight:bold;
     margin-top:10px;
+}
+
+/* TOGGLE MESSAGE */
+.toggle {
+    margin-top:20px;
+    background:white;
+    color:black;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.content {
+    display:none;
+    margin-top:10px;
+    text-align:left;
+    line-height:1.6;
+}
+
+/* FOOTER */
+.footer {
+    margin-top:30px;
+}
+
+.footer a {
+    color:#d4af37;
+    text-decoration:none;
 }
 </style>
 </head>
@@ -135,7 +149,7 @@ body {
 
     <div class="pass-box">
         <p style="color:white;">Please Enter Password To Continue</p>
-        <input type="password" id="pass" placeholder="Enter Password">
+        <input type="password" id="pass">
         <br>
         <button onclick="checkPass()">Continue</button>
     </div>
@@ -148,59 +162,88 @@ body {
 
     <div class="countdown" id="countdown"></div>
 
+    <!-- QR -->
     <div class="qr-container">
 
-        <!-- SPECIAL -->
         <div class="qr-box">
             <h3>🎁 Access Special Bday Wishes</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=special">
             <br>
-            <a class="access-btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">
-                Open Special Wishes
-            </a>
+            <a class="access-btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">Open</a>
         </div>
 
-        <!-- FRIENDS -->
         <div class="qr-box">
             <h3>👫 Access Friend's Wishes</h3>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=friends">
             <br>
-            <a class="access-btn" href="https://drive.google.com/drive/folders/13VikTeaStbn47GmQEFAe47ODoEBFRvHh" target="_blank">
-                Open Friend's Wishes
-            </a>
+            <a class="access-btn" href="https://drive.google.com/drive/folders/13VikTeaStbn47GmQEFAe47ODoEBFRvHh" target="_blank">Open</a>
         </div>
 
+    </div>
+
+    <!-- TOGGLE MESSAGE -->
+    <div class="toggle" onclick="toggleMsg()">💌 Tap to Read Special Message</div>
+
+    <div class="content" id="msg">
+        Tanishi, honestly… tum ek alag hi vibe ho 💫  
+        Aaj ka din sirf birthday nahi hai, it's a celebration of someone who makes everything better just by existing.  
+
+        Tumhari energy, tumhara calm nature, aur tumhara confidence — sab kuch next level hai.  
+        GenZ language me bole toh — you're not just “cool”, you're rare ✨  
+
+        Tum wo insaan ho jo bina zyada bole bhi impact create kar deta hai.  
+        Leadership ho, friendship ho ya life ke goals — tum har jagah shine karti ho 🌟  
+
+        Life tumhe har wo cheez de jo tum deserve karti ho — happiness, success, peace aur endless growth 💛  
+
+        Stay the same amazing person you are… because that's your biggest power 💯  
+
+        Aur haan — always keep smiling, kyunki tumhari smile hi tumhari real superpower hai 😄  
+
+        Once again — Happy Birthday Tanishi 🎂✨  
+    </div>
+
+    <!-- FINAL LINE -->
+    <div style="margin-top:20px;font-weight:bold;">
+        Happiest BIRTHDAY Tanishi 🎉 God bless You 🙏
+    </div>
+
+    <!-- EMAIL -->
+    <div class="footer">
+        📩 <a href="mailto:mankitmankit7@gmail.com">Send your feedback & suggestions</a>
     </div>
 
 </div>
 
 <script>
 function checkPass(){
-    let pass = document.getElementById("pass").value;
-
-    if(pass === "MMTG231803"){
-        document.getElementById("screen1").style.display = "none";
-        document.getElementById("screen2").style.display = "flex";
-    } else {
-        alert("Wrong Password ❌");
-    }
+    let pass=document.getElementById("pass").value;
+    if(pass==="MMTG231803"){
+        document.getElementById("screen1").style.display="none";
+        document.getElementById("screen2").style.display="flex";
+    } else alert("Wrong Password ❌");
 }
 
 /* COUNTDOWN */
-var targetDate = new Date("April 23, 2026 00:00:00").getTime();
+var target=new Date("April 23, 2026 00:00:00").getTime();
+setInterval(()=>{
+    let now=new Date().getTime();
+    let gap=target-now;
 
-setInterval(function(){
-    var now = new Date().getTime();
-    var gap = targetDate - now;
+    let d=Math.floor(gap/(1000*60*60*24));
+    let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+    let m=Math.floor((gap%(1000*60*60))/(1000*60));
+    let s=Math.floor((gap%(1000*60))/1000);
 
-    var d = Math.floor(gap/(1000*60*60*24));
-    var h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-    var m = Math.floor((gap%(1000*60*60))/(1000*60));
-    var s = Math.floor((gap%(1000*60))/1000);
-
-    document.getElementById("countdown").innerHTML =
+    document.getElementById("countdown").innerHTML=
     d+"d "+h+"h "+m+"m "+s+"s remaining 🎉";
 },1000);
+
+/* TOGGLE */
+function toggleMsg(){
+    let msg=document.getElementById("msg");
+    msg.style.display = (msg.style.display==="block")?"none":"block";
+}
 </script>
 
 </body>
