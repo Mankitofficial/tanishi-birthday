@@ -8,7 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body { margin:0; font-family:'Poppins',sans-serif; }
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+}
 
 /* COMMON SCREEN */
 .screen {
@@ -26,7 +29,7 @@ body { margin:0; font-family:'Poppins',sans-serif; }
     color:#d4af37;
 }
 
-/* TEXT */
+/* FADE TEXT */
 .fade-text {
     font-family:'Playfair Display';
     font-size:34px;
@@ -34,9 +37,11 @@ body { margin:0; font-family:'Poppins',sans-serif; }
     animation:fadeIn 3s ease forwards;
 }
 
-@keyframes fadeIn { to { opacity:1; } }
+@keyframes fadeIn {
+    to { opacity:1; transform:translateY(0); }
+}
 
-/* PASS BOX */
+/* PASSWORD BOX */
 .pass-box {
     margin-top:40px;
     background:rgba(255,255,255,0.1);
@@ -49,6 +54,7 @@ body { margin:0; font-family:'Poppins',sans-serif; }
     padding:10px;
     border:none;
     border-radius:8px;
+    outline:none;
     text-align:center;
 }
 
@@ -87,7 +93,7 @@ body { margin:0; font-family:'Poppins',sans-serif; }
     border-radius:10px;
 }
 
-/* CALLOUT QR BOX */
+/* QR SECTION */
 .qr-container {
     margin-top:25px;
     width:100%;
@@ -107,7 +113,7 @@ body { margin:0; font-family:'Poppins',sans-serif; }
     margin:10px 0;
 }
 
-/* BUTTON STYLE */
+/* BUTTON */
 .access-btn {
     display:inline-block;
     padding:10px 15px;
@@ -129,7 +135,7 @@ body { margin:0; font-family:'Poppins',sans-serif; }
 
     <div class="pass-box">
         <p style="color:white;">Please Enter Password To Continue</p>
-        <input type="password" id="pass" placeholder="Password">
+        <input type="password" id="pass" placeholder="Enter Password">
         <br>
         <button onclick="checkPass()">Continue</button>
     </div>
@@ -142,27 +148,22 @@ body { margin:0; font-family:'Poppins',sans-serif; }
 
     <div class="countdown" id="countdown"></div>
 
-    <!-- QR SECTION -->
     <div class="qr-container">
 
-        <!-- BOX 1 -->
+        <!-- SPECIAL -->
         <div class="qr-box">
             <h3>🎁 Access Special Bday Wishes</h3>
-
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=special">
-
             <br>
             <a class="access-btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">
                 Open Special Wishes
             </a>
         </div>
 
-        <!-- BOX 2 -->
+        <!-- FRIENDS -->
         <div class="qr-box">
             <h3>👫 Access Friend's Wishes</h3>
-
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=friends">
-
             <br>
             <a class="access-btn" href="https://drive.google.com/drive/folders/13VikTeaStbn47GmQEFAe47ODoEBFRvHh" target="_blank">
                 Open Friend's Wishes
@@ -174,12 +175,15 @@ body { margin:0; font-family:'Poppins',sans-serif; }
 </div>
 
 <script>
-/* PASSWORD */
 function checkPass(){
-    if(document.getElementById("pass").value==="MMTG231803"){
-        screen1.style.display="none";
-        screen2.style.display="flex";
-    } else alert("Wrong Password ❌");
+    let pass = document.getElementById("pass").value;
+
+    if(pass === "MMTG231803"){
+        document.getElementById("screen1").style.display = "none";
+        document.getElementById("screen2").style.display = "flex";
+    } else {
+        alert("Wrong Password ❌");
+    }
 }
 
 /* COUNTDOWN */
@@ -191,4 +195,13 @@ setInterval(function(){
 
     var d = Math.floor(gap/(1000*60*60*24));
     var h = Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-    var m = Math
+    var m = Math.floor((gap%(1000*60*60))/(1000*60));
+    var s = Math.floor((gap%(1000*60))/1000);
+
+    document.getElementById("countdown").innerHTML =
+    d+"d "+h+"h "+m+"m "+s+"s remaining 🎉";
+},1000);
+</script>
+
+</body>
+</html>
