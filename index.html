@@ -13,151 +13,56 @@ body{margin:0;font-family:'Poppins';overflow:hidden}
 /* SCREEN */
 .screen{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 
-/* SCREEN 1 */
-#screen1{
-background:linear-gradient(135deg,#0b1f5e,#1e5eff);
-color:#d4af37;
-}
-
-#typing{
-font-size:38px;
-font-family:'Playfair Display';
-letter-spacing:3px;
-animation:fadeIn 3s ease;
-}
-
-/* ANIMATION */
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1}
-}
-
-@keyframes slideUp{
-from{transform:translateY(40px);opacity:0}
-to{transform:translateY(0);opacity:1}
-}
+/* INTRO */
+#screen1{background:linear-gradient(135deg,#0b1f5e,#1e5eff);color:#d4af37}
+#typing{font-size:38px;font-family:'Playfair Display';letter-spacing:3px}
 
 /* PASSWORD */
-.pass-box{
-margin-top:30px;
-background:rgba(255,255,255,0.15);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-animation:slideUp 1s ease;
-}
-
-.pass-box input{
-padding:10px;
-border:none;
-border-radius:8px;
-text-align:center;
-}
-
-.pass-box button{
-margin-top:10px;
-padding:8px 20px;
-background:#d4af37;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
+.pass-box{margin-top:30px;background:rgba(255,255,255,0.15);padding:20px;border-radius:15px}
+.pass-box input{padding:10px;border:none;border-radius:8px;text-align:center}
+.pass-box button{margin-top:10px;padding:8px 20px;background:#d4af37;border:none;border-radius:8px;cursor:pointer}
 
 /* PHOTO */
 #photoScreen{display:none;background:black}
 #photoScreen img{width:100%;height:100%;object-fit:cover}
 
 /* MAIN */
-#main{
-display:none;
-overflow:auto;
-background:linear-gradient(#1e5eff,#0b1f5e);
-color:white;
-padding:20px;
-}
-
-/* TITLE */
-.title{
-font-family:'Playfair Display';
-font-size:34px;
-animation:fadeIn 2s ease;
-}
-
-/* COUNTDOWN */
-.countdown{
-margin-top:10px;
-background:rgba(0,0,0,0.4);
-padding:10px;
-border-radius:10px;
-animation:fadeIn 2s ease;
-}
+#main{display:none;overflow:auto;background:linear-gradient(#1e5eff,#0b1f5e);color:white;padding:20px}
+.title{font-family:'Playfair Display';font-size:34px}
+.countdown{margin-top:10px;background:rgba(0,0,0,0.4);padding:10px;border-radius:10px}
 
 /* BOX */
-.box{
-margin-top:20px;
-padding:18px;
-border-radius:15px;
-color:white;
-animation:slideUp 1s ease;
-}
-
+.box{margin-top:20px;padding:15px;border-radius:15px}
 .box1{background:linear-gradient(135deg,#ff7eb3,#ff758c)}
 .box2{background:linear-gradient(135deg,#43cea2,#185a9d)}
 
-/* BUTTON */
-.btn{
-display:inline-block;
-margin-top:10px;
-padding:8px 15px;
-background:#fff;
-color:black;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-transition:0.3s;
-}
-.btn:hover{transform:scale(1.05)}
+.btn{display:inline-block;margin-top:10px;padding:8px 15px;background:#fff;color:black;border-radius:8px;cursor:pointer}
 
-/* MESSAGE */
-.msg{
-margin-top:20px;
-line-height:1.6;
-text-align:left;
-animation:fadeIn 2s ease;
-}
+/* CAKE */
+.cake-box{margin-top:20px;padding:15px;border-radius:15px;background:#ffd1dc;color:black}
+.cake{width:120px;height:120px;background:#ff69b4;margin:15px auto;border-radius:10px;display:none}
+.knife{display:none;cursor:pointer}
+
+/* TEXT RAIN */
+.hb{position:fixed;color:white;font-size:20px;animation:fall 3s linear}
+@keyframes fall{from{transform:translateY(-100px)}to{transform:translateY(100vh)}}
 
 /* EMAIL */
-.email{
-margin-top:25px;
-padding:15px;
-background:rgba(255,255,255,0.1);
-border-radius:12px;
-}
+.email{margin-top:20px}
 
 /* MUSIC BUTTON */
-.music-btn{
-position:fixed;
-top:15px;
-right:15px;
-background:#fff;
-color:black;
-padding:8px 12px;
-border-radius:10px;
-cursor:pointer;
-z-index:999;
-}
+.music-btn{position:fixed;top:10px;right:10px;background:white;padding:8px;border-radius:10px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 MUSIC -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+<source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MUSIC BUTTON -->
-<div class="music-btn" onclick="toggleMusic()">🎵 Music</div>
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <!-- SCREEN 1 -->
 <div class="screen" id="screen1">
@@ -182,38 +87,33 @@ z-index:999;
 <div class="title">Happy Birthday Tanishi G 👑</div>
 <div class="countdown" id="countdown"></div>
 
-<!-- BOX 1 -->
 <div class="box box1">
 <h3>🎁 Special Birthday Wishes</h3>
 <div class="btn" onclick="verify()">Access</div>
 </div>
 
-<!-- BOX 2 -->
 <div class="box box2">
 <h3>🎥 Friends Video Messages</h3>
 <a class="btn" href="https://fixed-dragonfly-5de.notion.site/Birthday-wishes-34989058459d80f4afb2dd1d771816f4?pvs=73" target="_blank">Open</a>
 </div>
 
+<!-- CAKE -->
+<div class="cake-box">
+<h3>🎂 Cake Cutting kijiye</h3>
+<div class="btn" onclick="showCake()">Start</div>
+
+<div class="cake" id="cake"></div>
+<div class="knife" id="knife" onclick="cutCake()">🔪 Cut</div>
+</div>
+
 <!-- MESSAGE -->
-<div class="msg">
-Feliz cumpleaños Tanishi 🎉  
-Eres increíble, llena de energía positiva y vibes únicas ✨  
-Tu sonrisa ilumina todo — main character energy 💫  
-
-Que este año te traiga felicidad infinita, éxito y momentos inolvidables 💛  
-Sigue brillando porque eres especial 🌟  
-
-Happy Birthday Queen 👑✨  
+<div style="margin-top:20px">
+Feliz cumpleaños Tanishi 🎉 You are amazing 💫 Stay blessed Queen 👑✨
 </div>
 
 <!-- EMAIL -->
 <div class="email">
-📩 <a href="mailto:mankitmankit7@gmail.com" style="color:#d4af37;">Send Feedback & Suggestions</a>
-</div>
-
-<!-- MULTI LANG -->
-<div style="margin-top:20px;font-size:14px;">
-Happy Birthday • Feliz Cumpleaños • Bon Anniversaire • Alles Gute • Buon Compleanno • Feliz Aniversário • जन्मदिन मुबारक • お誕生日おめでとう • 생일 축하해 • عيد ميلاد سعيد • С днём рождения • สุขสันต์วันเกิด • Selamat Ulang Tahun • Chúc mừng sinh nhật • Doğum günün kutlu olsun • Happiest Birthday 🎉
+<a href="mailto:mankitmankit7@gmail.com" style="color:#d4af37;">Send Feedback</a>
 </div>
 
 </div>
@@ -231,14 +131,11 @@ setTimeout(type,50);
 }}
 type();
 
-/* PASSWORD + MUSIC START */
+/* PASSWORD */
 function checkPass(){
-let p=document.getElementById("pass").value;
-
-if(p==="MMTG231803"){
+if(document.getElementById("pass").value==="MMTG231803"){
 
 let music=document.getElementById("bgMusic");
-music.volume=0.5;
 music.play().catch(()=>{});
 
 document.getElementById("screen1").style.display="none";
@@ -253,14 +150,14 @@ document.body.style.overflow="auto";
 }else alert("Wrong Password ❌");
 }
 
-/* MUSIC TOGGLE */
+/* MUSIC */
 function toggleMusic(){
-let music=document.getElementById("bgMusic");
-if(music.paused){music.play();}else{music.pause();}
+let m=document.getElementById("bgMusic");
+m.paused?m.play():m.pause();
 }
 
 /* COUNTDOWN */
-let target=new Date("April 23, 2026 00:00:00").getTime();
+let target=new Date("April 23, 2026").getTime();
 setInterval(()=>{
 let now=new Date().getTime();
 let gap=target-now;
@@ -276,15 +173,32 @@ let m=Math.floor((gap%(1000*60*60))/(1000*60));
 let s=Math.floor((gap%(1000*60))/1000);
 
 document.getElementById("countdown").innerHTML=
-d+"d "+h+"h "+m+"m "+s+"s ⏳";
+d+"d "+h+"h "+m+"m "+s+"s";
 },1000);
 
 /* VERIFY */
 function verify(){
-let ans=prompt("Solve: 6 + 2 ?");
+let ans=prompt("5 + 3 ?");
 if(ans=="8"){
-window.open("https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q","_blank");
-}else alert("Wrong Answer ❌");
+window.open("https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q");
+}else alert("Wrong ❌");
+}
+
+/* CAKE */
+function showCake(){
+document.getElementById("cake").style.display="block";
+document.getElementById("knife").style.display="block";
+}
+
+function cutCake(){
+for(let i=0;i<25;i++){
+let span=document.createElement("div");
+span.className="hb";
+span.innerText="Happy Birthday 🎉";
+span.style.left=Math.random()*100+"vw";
+document.body.appendChild(span);
+setTimeout(()=>span.remove(),3000);
+}
 }
 
 </script>
