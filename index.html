@@ -8,136 +8,113 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body { margin:0; font-family:'Poppins',sans-serif; }
+body{margin:0;font-family:'Poppins',sans-serif;overflow:hidden}
 
-/* SCREEN */
-.screen {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+/* SCREENS */
+.screen{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+
+/* SCREEN 1 */
+#screen1{
+background:linear-gradient(135deg,#0b1f5e,#1e5eff);
+color:#d4af37;
 }
 
-/* FIRST SCREEN */
-#screen1 {
-    background: radial-gradient(circle,#1e5eff,#0b1f5e);
-    color:#d4af37;
+#typing{
+font-size:36px;
+font-family:'Playfair Display';
+letter-spacing:2px;
 }
 
-.fade-text {
-    font-family:'Playfair Display';
-    font-size:34px;
-    opacity:0;
-    animation:fadeIn 3s ease forwards;
+/* PASSWORD */
+.pass-box{
+margin-top:30px;
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:15px;
 }
 
-@keyframes fadeIn { to { opacity:1; } }
-
-.pass-box {
-    margin-top:40px;
-    background:rgba(255,255,255,0.1);
-    padding:20px;
-    border-radius:15px;
-    backdrop-filter:blur(10px);
+.pass-box input{
+padding:10px;
+border:none;
+border-radius:8px;
+text-align:center;
 }
 
-.pass-box input {
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    text-align:center;
+.pass-box button{
+margin-top:10px;
+padding:8px 20px;
+background:#d4af37;
+border:none;
+border-radius:8px;
+cursor:pointer;
 }
 
-.pass-box button {
-    margin-top:10px;
-    padding:8px 20px;
-    border:none;
-    background:#d4af37;
-    border-radius:8px;
-    cursor:pointer;
+/* PHOTO SCREEN */
+#photoScreen{
+display:none;
+background:black;
 }
 
-/* SECOND SCREEN */
-#screen2 {
-    display:none;
-    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1513151233558-d860c5398176');
-    background-size:cover;
-    background-position:center;
-    color:white;
-    padding:20px;
+#photoScreen img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* MAIN PAGE */
+#main{
+display:none;
+overflow:auto;
+background:linear-gradient(#1e5eff,#0b1f5e);
+color:white;
+padding:20px;
 }
 
 /* TITLE */
-.title {
-    font-family:'Playfair Display';
-    font-size:34px;
+.title{
+font-family:'Playfair Display';
+font-size:32px;
 }
 
 /* COUNTDOWN */
-.countdown {
-    margin-top:20px;
-    font-size:18px;
-    background:rgba(0,0,0,0.4);
-    padding:10px 20px;
-    border-radius:10px;
+.countdown{
+margin-top:10px;
+background:rgba(0,0,0,0.3);
+padding:10px;
+border-radius:10px;
 }
 
-/* QR */
-.qr-container {
-    margin-top:25px;
-    width:100%;
-    max-width:320px;
+/* BOX */
+.box{
+margin-top:20px;
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:12px;
 }
-
-.qr-box {
-    background:rgba(255,255,255,0.1);
-    padding:15px;
-    border-radius:15px;
-    margin-top:15px;
-}
-
-.qr-box img { width:140px; }
 
 /* BUTTON */
-.access-btn {
-    display:inline-block;
-    padding:10px 15px;
-    background:#d4af37;
-    color:black;
-    border-radius:8px;
-    text-decoration:none;
-    margin-top:10px;
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:8px 15px;
+background:#d4af37;
+color:black;
+border-radius:8px;
+cursor:pointer;
 }
 
-/* TOGGLE MESSAGE */
-.toggle {
-    margin-top:20px;
-    background:white;
-    color:black;
-    padding:15px;
-    border-radius:12px;
-    cursor:pointer;
+/* MESSAGE */
+.msg{
+margin-top:20px;
+line-height:1.6;
+text-align:left;
 }
 
-.content {
-    display:none;
-    margin-top:10px;
-    text-align:left;
-    line-height:1.6;
+/* EMAIL */
+.email{
+margin-top:20px;
 }
 
-/* FOOTER */
-.footer {
-    margin-top:30px;
-}
-
-.footer a {
-    color:#d4af37;
-    text-decoration:none;
-}
 </style>
 </head>
 
@@ -145,106 +122,128 @@ body { margin:0; font-family:'Poppins',sans-serif; }
 
 <!-- SCREEN 1 -->
 <div class="screen" id="screen1">
-    <div class="fade-text">Happy Birthday Tanishi Ji 🎉</div>
+<div id="typing"></div>
 
-    <div class="pass-box">
-        <p style="color:white;">Please Enter Password To Continue</p>
-        <input type="password" id="pass">
-        <br>
-        <button onclick="checkPass()">Continue</button>
-    </div>
+<div class="pass-box">
+<p style="color:white">Enter Password</p>
+<input type="password" id="pass">
+<br>
+<button onclick="checkPass()">Continue</button>
+</div>
 </div>
 
-<!-- SCREEN 2 -->
-<div class="screen" id="screen2">
+<!-- PHOTO SCREEN -->
+<div class="screen" id="photoScreen">
+<img src="photo.jpg">
+</div>
 
-    <div class="title">Happy Birthday Tanishi Ji 🎂</div>
+<!-- MAIN -->
+<div id="main">
 
-    <div class="countdown" id="countdown"></div>
+<div class="title">Happy Birthday Tanishi G 👑</div>
+<div class="countdown" id="countdown"></div>
 
-    <!-- QR -->
-    <div class="qr-container">
+<!-- BOX 1 -->
+<div class="box">
+<h3>🎁 Special Birthday Wishes</h3>
+<div class="btn" onclick="verify()">Access</div>
+</div>
 
-        <div class="qr-box">
-            <h3>🎁 Access Special Bday Wishes</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=special">
-            <br>
-            <a class="access-btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">Open</a>
-        </div>
+<!-- BOX 2 -->
+<div class="box">
+<h3>🎥 Access Friends Video Message</h3>
+<a class="btn" href="https://fixed-dragonfly-5de.notion.site/Birthday-wishes-34989058459d80f4afb2dd1d771816f4?pvs=73" target="_blank">Open</a>
+</div>
 
-        <div class="qr-box">
-            <h3>👫 Access Friend's Wishes</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=friends">
-            <br>
-            <a class="access-btn" href="https://drive.google.com/drive/folders/13VikTeaStbn47GmQEFAe47ODoEBFRvHh" target="_blank">Open</a>
-        </div>
+<!-- MESSAGE -->
+<div class="msg">
+Feliz cumpleaños Tanishi 🎉  
+Eres una persona increíble, llena de energía positiva, confianza y una vibra única ✨  
+Tu presencia ilumina cada lugar y hace que todo sea mejor.  
 
-    </div>
+Que este nuevo año de tu vida esté lleno de felicidad, éxito y momentos hermosos 💫  
+Sigue brillando como siempre, porque honestamente eres especial de una manera única 💛  
 
-    <!-- TOGGLE MESSAGE -->
-    <div class="toggle" onclick="toggleMsg()">💌 Tap to Read Special Message</div>
+Nunca dejes de creer en ti misma, porque tienes todo lo necesario para lograr cosas grandes 🌟  
+Tu sonrisa es tu superpoder y tu actitud es tu mayor fortaleza 💯  
 
-    <div class="content" id="msg">
-        Tanishi, honestly… tum ek alag hi vibe ho 💫  
-        Aaj ka din sirf birthday nahi hai, it's a celebration of someone who makes everything better just by existing.  
+Hoy celebramos no solo tu cumpleaños, sino la persona maravillosa que eres 💖  
+Disfruta cada momento, ríe mucho y sigue siendo tú misma siempre 💫  
 
-        Tumhari energy, tumhara calm nature, aur tumhara confidence — sab kuch next level hai.  
-        GenZ language me bole toh — you're not just “cool”, you're rare ✨  
+Feliz cumpleaños una vez más 🎂✨  
+</div>
 
-        Tum wo insaan ho jo bina zyada bole bhi impact create kar deta hai.  
-        Leadership ho, friendship ho ya life ke goals — tum har jagah shine karti ho 🌟  
+<!-- EMAIL -->
+<div class="email">
+<a href="mailto:mankitmankit7@gmail.com">Send Feedback</a>
+</div>
 
-        Life tumhe har wo cheez de jo tum deserve karti ho — happiness, success, peace aur endless growth 💛  
-
-        Stay the same amazing person you are… because that's your biggest power 💯  
-
-        Aur haan — always keep smiling, kyunki tumhari smile hi tumhari real superpower hai 😄  
-
-        Once again — Happy Birthday Tanishi 🎂✨  
-    </div>
-
-    <!-- FINAL LINE -->
-    <div style="margin-top:20px;font-weight:bold;">
-        Happiest BIRTHDAY Tanishi 🎉 God bless You 🙏
-    </div>
-
-    <!-- EMAIL -->
-    <div class="footer">
-        📩 <a href="mailto:mankitmankit7@gmail.com">Send your feedback & suggestions</a>
-    </div>
+<!-- MULTI LANG -->
+<div style="margin-top:20px;font-size:14px;">
+Happy Birthday • Feliz Cumpleaños • Bon Anniversaire • Alles Gute • Buon Compleanno • Feliz Aniversário • শুভ জন্মদিন • お誕生日おめでとう • 생일 축하해 • عيد ميلاد سعيد • С днём рождения • สุขสันต์วันเกิด • जन्मदिन मुबारक • Selamat Ulang Tahun • Chúc mừng sinh nhật • Doğum günün kutlu olsun • Happpiest Birthday 🎉
+</div>
 
 </div>
 
 <script>
+
+/* TYPE EFFECT */
+let text="HAPPY BIRTHDAY TANISHI";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,50);
+}
+}
+type();
+
+/* PASSWORD */
 function checkPass(){
-    let pass=document.getElementById("pass").value;
-    if(pass==="MMTG231803"){
-        document.getElementById("screen1").style.display="none";
-        document.getElementById("screen2").style.display="flex";
-    } else alert("Wrong Password ❌");
+let p=document.getElementById("pass").value;
+if(p==="MMTG281803"){
+document.getElementById("screen1").style.display="none";
+document.getElementById("photoScreen").style.display="flex";
+
+setTimeout(()=>{
+document.getElementById("photoScreen").style.display="none";
+document.getElementById("main").style.display="block";
+document.body.style.overflow="auto";
+},3000);
+
+}else alert("Wrong Password ❌");
 }
 
 /* COUNTDOWN */
-var target=new Date("April 23, 2026 00:00:00").getTime();
+let target=new Date("April 23, 2026 00:00:00").getTime();
 setInterval(()=>{
-    let now=new Date().getTime();
-    let gap=target-now;
+let now=new Date().getTime();
+let gap=target-now;
 
-    let d=Math.floor(gap/(1000*60*60*24));
-    let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-    let m=Math.floor((gap%(1000*60*60))/(1000*60));
-    let s=Math.floor((gap%(1000*60))/1000);
+if(gap<=0){
+document.getElementById("countdown").innerHTML="Janamdin Mubarak 🎉";
+return;
+}
 
-    document.getElementById("countdown").innerHTML=
-    d+"d "+h+"h "+m+"m "+s+"s remaining 🎉";
+let d=Math.floor(gap/(1000*60*60*24));
+let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
+let m=Math.floor((gap%(1000*60*60))/(1000*60));
+let s=Math.floor((gap%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML=
+d+"d "+h+"h "+m+"m "+s+"s";
 },1000);
 
-/* TOGGLE */
-function toggleMsg(){
-    let msg=document.getElementById("msg");
-    msg.style.display = (msg.style.display==="block")?"none":"block";
+/* VERIFY */
+function verify(){
+let ans=prompt("What is 5 + 3 ?");
+if(ans=="8"){
+window.open("https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q","_blank");
+}else alert("Wrong Answer ❌");
 }
+
 </script>
 
 </body>
-</html>
+    </html>
