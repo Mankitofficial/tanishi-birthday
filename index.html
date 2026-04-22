@@ -16,7 +16,6 @@ color:white;
 overflow:hidden;
 }
 
-/* SCREEN */
 .screen{
 height:100vh;
 display:flex;
@@ -26,7 +25,6 @@ align-items:center;
 text-align:center;
 }
 
-/* INTRO */
 #screen1{
 background: radial-gradient(circle,#000,#0b1f5e);
 }
@@ -38,7 +36,6 @@ color:#ffd700;
 text-shadow:0 0 20px #ffd700;
 }
 
-/* PASSWORD */
 .pass-box{
 margin-top:30px;
 background:rgba(255,255,255,0.1);
@@ -63,19 +60,9 @@ border-radius:8px;
 cursor:pointer;
 }
 
-/* PHOTO */
-#photoScreen{
-display:none;
-background:black;
-}
+#photoScreen{display:none;background:black}
+#photoScreen img{width:100%;height:100%;object-fit:cover}
 
-#photoScreen img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* MAIN */
 #main{
 display:none;
 overflow:auto;
@@ -83,14 +70,11 @@ padding:20px;
 background:linear-gradient(#000,#1e5eff);
 }
 
-/* TITLE */
 .title{
 font-size:34px;
 font-family:'Playfair Display';
-text-shadow:0 0 10px #fff;
 }
 
-/* COUNTDOWN */
 .countdown{
 margin-top:10px;
 background:rgba(255,255,255,0.1);
@@ -98,7 +82,6 @@ padding:10px;
 border-radius:10px;
 }
 
-/* BOX */
 .box{
 margin-top:20px;
 padding:20px;
@@ -112,7 +95,6 @@ transform:scale(1.05);
 background:rgba(255,255,255,0.2);
 }
 
-/* BUTTON */
 .btn{
 margin-top:10px;
 display:inline-block;
@@ -124,38 +106,6 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* CAKE */
-.cake-box{
-margin-top:20px;
-padding:20px;
-border-radius:15px;
-background:linear-gradient(#ff9a9e,#fad0c4);
-color:black;
-}
-
-.cake{
-width:120px;
-height:120px;
-background:#ff4da6;
-margin:15px auto;
-border-radius:10px;
-display:none;
-}
-
-.knife{display:none;cursor:pointer}
-
-/* TEXT RAIN */
-.hb{
-position:fixed;
-color:#ffd700;
-animation:fall 3s linear;
-}
-@keyframes fall{
-from{transform:translateY(-100px)}
-to{transform:translateY(100vh)}
-}
-
-/* MUSIC */
 .music-btn{
 position:fixed;
 top:10px;
@@ -164,6 +114,15 @@ background:#ffd700;
 padding:8px;
 border-radius:10px;
 cursor:pointer;
+}
+
+.msg{
+margin-top:25px;
+line-height:1.8;
+text-align:left;
+background:rgba(255,255,255,0.05);
+padding:15px;
+border-radius:12px;
 }
 </style>
 </head>
@@ -199,7 +158,6 @@ cursor:pointer;
 <div class="title">Happy Birthday Tanishi G 👑</div>
 <div class="countdown" id="countdown"></div>
 
-<!-- LINKS -->
 <div class="box">
 <h3>🎁 Birthday Wishes 1</h3>
 <a class="btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">Open</a>
@@ -207,28 +165,54 @@ cursor:pointer;
 
 <div class="box">
 <h3>🎁 Birthday Wishes 2</h3>
-<a class="btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">Open</a>
+<a class="btn" href="https://fixed-dragonfly-5de.notion.site/Birthday-wishes-34989058459d80f4afb2dd1d771816f4" target="_blank">Open</a>
 </div>
 
-<!-- CAKE -->
-<div class="cake-box">
-<h3>🎂 Cake Cutting</h3>
-<div class="btn" onclick="showCake()">Start</div>
+<!-- LONG MESSAGE -->
+<div class="msg">
+Tanishi, today is not just a date — it’s a celebration of someone truly special 💫  
+You are that rare combination of strength, calmness, and pure positive energy ✨  
 
-<div class="cake" id="cake"></div>
-<div class="knife" id="knife" onclick="cutCake()">🔪 Cut</div>
+Honestly, in today’s world, it’s very hard to find someone who carries grace the way you do.  
+Your presence is not loud, yet it’s powerful. You don’t need attention, you naturally attract respect 👑  
+
+GenZ style me bole toh — you’re not just “cool”, you’re actually elite 💯  
+Tumhari vibe alag hi level ki hai… calm but impactful, simple but unforgettable.  
+
+You inspire without trying.  
+You lead without forcing.  
+And you shine without showing off 🌟  
+
+Life me jo bhi aaye — success, challenges, new journeys — ek cheez fix hai:  
+You will always rise stronger and better 💛  
+
+May your life be filled with:
+endless happiness 😊  
+real friendships 🤝  
+big achievements 🚀  
+and peaceful moments 🌸  
+
+Never stop believing in yourself, because honestly — you have that spark which makes people admire you silently ✨  
+
+Aur haan, ek baat yaad rakhna:  
+You don’t need to become someone else to be special…  
+You already are 💯  
+
+Today is your day, so smile more, enjoy more, and celebrate yourself fully 🎂  
+
+Once again — Happy Birthday Tanishi 🎉  
+Stay blessed, stay amazing, and keep being the queen you are 👑  
 </div>
 
-<!-- EMAIL -->
-<div style="margin-top:20px">
-<a href="mailto:mankitmankit7@gmail.com" style="color:#ffd700;">Send Feedback</a>
+<!-- MULTI LANGUAGE -->
+<div style="margin-top:20px;font-size:14px;">
+Happy Birthday Tanishi • Feliz Cumpleaños Tanishi • Bon Anniversaire Tanishi • Alles Gute Tanishi • Buon Compleanno Tanishi • Feliz Aniversário Tanishi • जन्मदिन मुबारक तनीषी • お誕生日おめでとうタनीशी • 생일 축하해 타니시 • عيد ميلاد سعيد تانيشي • С днём рождения Таниши • สุขสันต์วันเกิด ทานิชิ • Selamat Ulang Tahun Tanishi • Chúc mừng sinh nhật Tanishi • Doğum günün kutlu olsun Tanishi • শুভ জন্মদিন তানিশি • Happiest Birthday Tanishi 🎉
 </div>
 
 </div>
 
 <script>
 
-/* TYPE */
 let text="HAPPY BIRTHDAY TANISHI";
 let i=0;
 function type(){
@@ -239,12 +223,9 @@ setTimeout(type,50);
 }}
 type();
 
-/* PASSWORD */
 function checkPass(){
 if(pass.value==="MMTG231803"){
-
 bgMusic.play().catch(()=>{});
-
 screen1.style.display="none";
 photoScreen.style.display="flex";
 
@@ -257,12 +238,10 @@ document.body.style.overflow="auto";
 }else alert("Wrong Password ❌");
 }
 
-/* MUSIC */
 function toggleMusic(){
 bgMusic.paused?bgMusic.play():bgMusic.pause();
 }
 
-/* COUNTDOWN */
 let target=new Date("April 23, 2026").getTime();
 setInterval(()=>{
 let now=new Date().getTime();
@@ -280,23 +259,6 @@ let s=Math.floor((gap%(1000*60))/1000);
 
 countdown.innerHTML=d+"d "+h+"h "+m+"m "+s+"s";
 },1000);
-
-/* CAKE */
-function showCake(){
-cake.style.display="block";
-knife.style.display="block";
-}
-
-function cutCake(){
-for(let i=0;i<30;i++){
-let el=document.createElement("div");
-el.className="hb";
-el.innerText="Happy Birthday 🎉";
-el.style.left=Math.random()*100+"vw";
-document.body.appendChild(el);
-setTimeout(()=>el.remove(),3000);
-}
-}
 
 </script>
 
