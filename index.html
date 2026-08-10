@@ -3,264 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<title>Raksha Bandhan | A Bond Beyond a Thread</title>
+
+<meta name="description"
+content="Discover the real meaning, cultural traditions and history of Raksha Bandhan in 12 languages.">
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-margin:0;
-font-family:'Poppins';
-background:black;
-color:white;
-overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b0807;
+    color:#f8eee5;
+    line-height:1.8;
 }
 
-.screen{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px 20px;
+    background:
+        radial-gradient(circle at 50% 40%,
+        #71351f 0%,
+        #30150f 35%,
+        #0b0807 75%);
+    position:relative;
+    overflow:hidden;
 }
 
-#screen1{
-background: radial-gradient(circle,#000,#0b1f5e);
+.hero::before,
+.hero::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,190,90,.08);
 }
 
-#typing{
-font-size:40px;
-font-family:'Playfair Display';
-color:#ffd700;
-text-shadow:0 0 20px #ffd700;
+.hero::before{
+    width:400px;
+    height:400px;
+    top:-150px;
+    left:-150px;
 }
 
-.pass-box{
-margin-top:30px;
-background:rgba(255,255,255,0.1);
-padding:20px;
-border-radius:15px;
-backdrop-filter:blur(10px);
+.hero::after{
+    width:500px;
+    height:500px;
+    bottom:-250px;
+    right:-200px;
 }
 
-.pass-box input{
-padding:10px;
-border:none;
-border-radius:8px;
-text-align:center;
+.hero-content{
+    max-width:900px;
+    position:relative;
+    z-index:2;
 }
 
-.pass-box button{
-margin-top:10px;
-padding:8px 20px;
-background:#ffd700;
-border:none;
-border-radius:8px;
-cursor:pointer;
+.rakhi-icon{
+    font-size:90px;
+    animation:float 3s ease-in-out infinite;
 }
 
-#photoScreen{display:none;background:black}
-#photoScreen img{width:100%;height:100%;object-fit:cover}
-
-#main{
-display:none;
-overflow:auto;
-padding:20px;
-background:linear-gradient(#000,#1e5eff);
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
 }
 
-.title{
-font-size:34px;
-font-family:'Playfair Display';
+.mini-title{
+    letter-spacing:5px;
+    font-size:12px;
+    color:#d9a75d;
+    margin-top:15px;
 }
 
-.countdown{
-margin-top:10px;
-background:rgba(255,255,255,0.1);
-padding:10px;
-border-radius:10px;
-}
+.hero h1{
+    font-family:Georgia,serif;
+    font-size:clamp(55px,10vw,115px);
+    line-height:1;
+    margin:20px 0;
 
-.box{
-margin-top:20px;
-padding:20px;
-border-radius:15px;
-background:rgba(255,255,255,0.1);
-transition:0.3s;
-}
+    background:linear-gradient(
+        90deg,
+        #d89b4f,
+        #fff0c2,
+        #d89b4f
+    );
 
-.box:hover{
-transform:scale(1.05);
-background:rgba(255,255,255,0.2);
-}
-
-.btn{
-margin-top:10px;
-display:inline-block;
-padding:10px 15px;
-background:#ffd700;
-color:black;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.music-btn{
-position:fixed;
-top:10px;
-right:10px;
-background:#ffd700;
-padding:8px;
-border-radius:10px;
-cursor:pointer;
-}
-
-.msg{
-margin-top:25px;
-line-height:1.8;
-text-align:left;
-background:rgba(255,255,255,0.05);
-padding:15px;
-border-radius:12px;
-}
-</style>
-</head>
-
-<body>
-
-<audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div class="music-btn" onclick="toggleMusic()">🎵</div>
-
-<!-- SCREEN 1 -->
-<div class="screen" id="screen1">
-<div id="typing"></div>
-
-<div class="pass-box">
-<p>Enter Password</p>
-<input type="password" id="pass">
-<br>
-<button onclick="checkPass()">Continue</button>
-</div>
-</div>
-
-<!-- PHOTO -->
-<div class="screen" id="photoScreen">
-<img src="photo.jpg">
-</div>
-
-<!-- MAIN -->
-<div id="main">
-
-<div class="title">Happy Birthday Tanishi G 👑</div>
-<div class="countdown" id="countdown"></div>
-
-<div class="box">
-<h3>🎁 Birthday Wishes 1</h3>
-<a class="btn" href="https://drive.google.com/drive/folders/1min7ZnGdjJjx8g29qIIWgF4RecHZ365Q" target="_blank">Open</a>
-</div>
-
-<div class="box">
-<h3>🎁 Birthday Wishes 2</h3>
-<a class="btn" href="https://fixed-dragonfly-5de.notion.site/Birthday-wishes-34989058459d80f4afb2dd1d771816f4" target="_blank">Open</a>
-</div>
-
-<!-- LONG MESSAGE -->
-<div class="msg">
-Tanishi, today is not just a date — it’s a celebration of someone truly special 💫  
-You are that rare combination of strength, calmness, and pure positive energy ✨  
-
-Honestly, in today’s world, it’s very hard to find someone who carries grace the way you do.  
-Your presence is not loud, yet it’s powerful. You don’t need attention, you naturally attract respect 👑  
-
-GenZ style me bole toh — you’re not just “cool”, you’re actually elite 💯  
-Tumhari vibe alag hi level ki hai… calm but impactful, simple but unforgettable.  
-
-You inspire without trying.  
-You lead without forcing.  
-And you shine without showing off 🌟  
-
-Life me jo bhi aaye — success, challenges, new journeys — ek cheez fix hai:  
-You will always rise stronger and better 💛  
-
-May your life be filled with:
-endless happiness 😊  
-real friendships 🤝  
-big achievements 🚀  
-and peaceful moments 🌸  
-
-Never stop believing in yourself, because honestly — you have that spark which makes people admire you silently ✨  
-
-Aur haan, ek baat yaad rakhna:  
-You don’t need to become someone else to be special…  
-You already are 💯  
-
-Today is your day, so smile more, enjoy more, and celebrate yourself fully 🎂  
-
-Once again — Happy Birthday Tanishi 🎉  
-Stay blessed, stay amazing, and keep being the queen you are 👑  
-</div>
-
-<!-- MULTI LANGUAGE -->
-<div style="margin-top:20px;font-size:14px;">
-Happy Birthday Tanishi • Feliz Cumpleaños Tanishi • Bon Anniversaire Tanishi • Alles Gute Tanishi • Buon Compleanno Tanishi • Feliz Aniversário Tanishi • जन्मदिन मुबारक तनीषी • お誕生日おめでとうタनीशी • 생일 축하해 타니시 • عيد ميلاد سعيد تانيشي • С днём рождения Таниши • สุขสันต์วันเกิด ทานิชิ • Selamat Ulang Tahun Tanishi • Chúc mừng sinh nhật Tanishi • Doğum günün kutlu olsun Tanishi • শুভ জন্মদিন তানিশি • Happiest Birthday Tanishi 🎉
-</div>
-
-</div>
-
-<script>
-
-let text="HAPPY BIRTHDAY TANISHI";
-let i=0;
-function type(){
-if(i<text.length){
-typing.innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,50);
-}}
-type();
-
-function checkPass(){
-if(pass.value==="MMTG231803"){
-bgMusic.play().catch(()=>{});
-screen1.style.display="none";
-photoScreen.style.display="flex";
-
-setTimeout(()=>{
-photoScreen.style.display="none";
-main.style.display="block";
-document.body.style.overflow="auto";
-},3000);
-
-}else alert("Wrong Password ❌");
-}
-
-function toggleMusic(){
-bgMusic.paused?bgMusic.play():bgMusic.pause();
-}
-
-let target=new Date("April 23, 2026").getTime();
-setInterval(()=>{
-let now=new Date().getTime();
-let gap=target-now;
-
-if(gap<=0){
-countdown.innerHTML="🎉 Janamdin Mubarak 🎉";
-return;
-}
-
-let d=Math.floor(gap/(1000*60*60*24));
-let h=Math.floor((gap%(1000*60*60*24))/(1000*60*60));
-let m=Math.floor((gap%(1000*60*60))/(1000*60));
-let s=Math.floor((gap%(1000*60))/1000);
-
-countdown.innerHTML=d+"d "+h+"h "+m+"m "+s+"s";
-},1000);
-
-</script>
-
-</body>
-</html>
+    -
